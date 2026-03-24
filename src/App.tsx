@@ -18,7 +18,7 @@ function MandalaFrame() {
       <div className="mandala-corner mandala-corner-tr">
         <img src={mandalaImage} alt="" className="mandala-art" />
       </div>
-      <div className="mandala-corner mandala-corner-bl">
+      <div className="mandala-corner mandala-corner-bl mandala-mobile-hidden">
         <img src={mandalaImage} alt="" className="mandala-art" />
       </div>
       <div className="mandala-corner mandala-corner-tl is-soft mandala-mobile-hidden">
