@@ -136,10 +136,19 @@ html, body {
     radial-gradient(circle at 78% 75%, rgba(232, 189, 217, 0.14), transparent 38%);
 }
 
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
 @media (max-width: 768px) {
   .mandala-frame {
     --mandala-accent-opacity: 0.35;
     --mandala-soft-opacity: 0.14;
+  }
+
+  .mandala-mobile-hidden {
+    display: none;
   }
 
   .mandala-corner {
@@ -167,7 +176,7 @@ html, body {
   }
 
   .section-floral-overlay {
-    opacity: 0.72;
+    opacity: 0.6;
   }
 }
 

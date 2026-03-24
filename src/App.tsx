@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Phone, MapPin, Calendar, Clock } from "lucide-react";
+import { Sparkles, MapPin, Calendar, Clock } from "lucide-react";
 
 /**
  * Premium Sri Lankan Wedding Invitation Theme
@@ -21,10 +21,10 @@ function MandalaFrame() {
       <div className="mandala-corner mandala-corner-bl">
         <img src={mandalaImage} alt="" className="mandala-art" />
       </div>
-      <div className="mandala-corner mandala-corner-tl is-soft">
+      <div className="mandala-corner mandala-corner-tl is-soft mandala-mobile-hidden">
         <img src={mandalaImage} alt="" className="mandala-art" />
       </div>
-      <div className="mandala-corner mandala-corner-br is-soft">
+      <div className="mandala-corner mandala-corner-br is-soft mandala-mobile-hidden">
         <img src={mandalaImage} alt="" className="mandala-art" />
       </div>
     </div>
@@ -32,6 +32,7 @@ function MandalaFrame() {
 }
 
 function FloatingPetals() {
+  const [isLowPowerMode, setIsLowPowerMode] = useState(false);
   const [petals, setPetals] = useState<Array<{
     id: number;
     x: number;
@@ -44,23 +45,33 @@ function FloatingPetals() {
   }>>([]);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 768;
+    setIsLowPowerMode(reduceMotion || isMobile);
+
+    if (reduceMotion) {
+      setPetals([]);
+      return;
+    }
+
     const colors = ["#f1d6e8", "#e8bdd9", "#dd9ec8", "#fdf7fb"];
-    const newPetals = Array.from({ length: 30 }).map((_, i) => ({
+    const petalCount = isMobile ? 10 : 18;
+    const newPetals = Array.from({ length: petalCount }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
-      size: Math.random() * 8 + 8,
+      size: Math.random() * 7 + 7,
       rotation: Math.random() * 360,
-      duration: Math.random() * 15 + 15,
+      duration: Math.random() * 11 + 16,
       delay: Math.random() * 20,
       color: colors[Math.floor(Math.random() * colors.length)],
-      drift: Math.random() * 40 - 20,
+      drift: Math.random() * 24 - 12,
     }));
 
     setPetals(newPetals);
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 overflow-hidden z-40">
+    <div className={`pointer-events-none fixed inset-0 overflow-hidden z-40 ${isLowPowerMode ? "opacity-70" : ""}`}>
       {petals.map((petal) => (
         <motion.div
           key={petal.id}
@@ -75,11 +86,11 @@ function FloatingPetals() {
           animate={{
             y: "110vh",
             x: `${petal.x + petal.drift}vw`,
-            rotate: petal.rotation + 720,
+            rotate: petal.rotation + (isLowPowerMode ? 360 : 720),
             opacity: [0, 0.9, 0.8, 0],
           }}
           transition={{
-            duration: petal.duration,
+            duration: isLowPowerMode ? petal.duration * 1.2 : petal.duration,
             repeat: Infinity,
             delay: petal.delay,
             ease: "linear",
@@ -228,12 +239,12 @@ export default function WeddingInvitation() {
                 {/* Envelope Illustrations */}
                 <img
                   src={mandalaImage}
-                  className="absolute -top-28 -left-28 w-72 h-72 opacity-55 mix-blend-screen"
+                  className="absolute -top-20 md:-top-28 -left-20 md:-left-28 w-56 md:w-72 h-56 md:h-72 opacity-55 mix-blend-screen"
                   alt=""
                 />
                 <img
                   src={mandalaImage}
-                  className="absolute -bottom-28 -left-28 w-72 h-72 opacity-50 mix-blend-screen -rotate-90"
+                  className="absolute -bottom-20 md:-bottom-28 -left-20 md:-left-28 w-56 md:w-72 h-56 md:h-72 opacity-50 mix-blend-screen -rotate-90"
                   alt=""
                 />
 
@@ -255,12 +266,12 @@ export default function WeddingInvitation() {
                 {/* Envelope Illustrations */}
                 <img
                   src={mandalaImage}
-                  className="absolute -top-28 -right-28 w-72 h-72 opacity-55 mix-blend-screen rotate-90"
+                  className="absolute -top-20 md:-top-28 -right-20 md:-right-28 w-56 md:w-72 h-56 md:h-72 opacity-55 mix-blend-screen rotate-90"
                   alt=""
                 />
                 <img
                   src={mandalaImage}
-                  className="absolute -bottom-28 -right-28 w-72 h-72 opacity-50 mix-blend-screen rotate-180"
+                  className="absolute -bottom-20 md:-bottom-28 -right-20 md:-right-28 w-56 md:w-72 h-56 md:h-72 opacity-50 mix-blend-screen rotate-180"
                   alt=""
                 />
               </motion.div>
@@ -424,11 +435,11 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Wedding Details Section */}
-            <section className="py-24 md:py-32 w-full flex flex-col items-center px-4 relative">
+            <section className="cv-auto py-24 md:py-32 w-full flex flex-col items-center px-4 relative">
               <div className="section-floral-overlay absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
                 <img src={mandalaImage} className="absolute -left-20 md:-left-10 -top-10 md:top-8 w-[260px] md:w-[460px] h-auto mix-blend-multiply opacity-55 -rotate-[8deg]" alt="" />
-                <img src={mandalaImage} className="absolute -right-20 md:-right-10 -top-16 md:top-2 w-[250px] md:w-[430px] h-auto mix-blend-multiply opacity-50 rotate-[12deg]" alt="" />
-                <img src={mandalaImage} className="absolute -left-20 md:-left-6 bottom-2 md:bottom-8 w-[250px] md:w-[420px] h-auto mix-blend-multiply opacity-40 rotate-[180deg]" alt="" />
+                <img src={mandalaImage} className="hidden md:block absolute -right-20 md:-right-10 -top-16 md:top-2 w-[250px] md:w-[430px] h-auto mix-blend-multiply opacity-50 rotate-[12deg]" alt="" />
+                <img src={mandalaImage} className="hidden md:block absolute -left-20 md:-left-6 bottom-2 md:bottom-8 w-[250px] md:w-[420px] h-auto mix-blend-multiply opacity-40 rotate-[180deg]" alt="" />
                 <img src={mandalaImage} className="absolute -right-24 md:-right-8 bottom-0 md:bottom-14 w-[270px] md:w-[470px] h-auto mix-blend-multiply opacity-45 -rotate-[170deg]" alt="" />
               </div>
 
@@ -569,7 +580,7 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Countdown Section */}
-            <section className="py-24 md:py-36 bg-[#fffcf5] relative border-y border-theme-100/30 flex flex-col items-center overflow-hidden">
+            <section className="cv-auto py-24 md:py-36 bg-[#fffcf5] relative border-y border-theme-100/30 flex flex-col items-center overflow-hidden">
               {/* Premium Background Elements */}
               <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] aspect-square bg-theme-100 blur-[120px] rounded-full opacity-30 pointer-events-none" />
@@ -608,7 +619,7 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Venue Location Section */}
-            <section className="py-24 md:py-36 bg-[#fdfaf5] relative overflow-hidden">
+            <section className="cv-auto py-24 md:py-36 bg-[#fdfaf5] relative overflow-hidden">
               {/* Decorative Background */}
               <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-theme-200 blur-[150px] rounded-full opacity-20 pointer-events-none" />
@@ -695,7 +706,7 @@ export default function WeddingInvitation() {
             </section>
 
             {/* RSVP Section */}
-            <section className="py-24 md:py-36 bg-[#2c2a26] text-white relative overflow-hidden flex flex-col items-center">
+            <section className="cv-auto py-24 md:py-36 bg-[#2c2a26] text-white relative overflow-hidden flex flex-col items-center">
               {/* Opulent dark background */}
               <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
               <div className="absolute top-0 right-0 w-[60vw] h-[60vw] max-w-[800px] bg-theme-800 blur-[150px] rounded-full opacity-30 pointer-events-none" />
@@ -778,7 +789,7 @@ export default function WeddingInvitation() {
             <div className="relative bg-[#fdfaf5]">
               <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
 
-              <section className="py-24 md:py-36 relative flex flex-col items-center overflow-hidden">
+              <section className="cv-auto py-24 md:py-36 relative flex flex-col items-center overflow-hidden">
                 <img src={mandalaImage} alt="" className="absolute top-0 right-0 w-[40vw] max-w-[500px] opacity-[0.04] mix-blend-multiply translate-x-1/3 -translate-y-1/3 pointer-events-none" />
                 <img src={mandalaImage} alt="" className="absolute bottom-16 left-1/2 w-[38vw] max-w-[360px] opacity-[0.08] mix-blend-multiply -translate-x-1/2 pointer-events-none" />
 
