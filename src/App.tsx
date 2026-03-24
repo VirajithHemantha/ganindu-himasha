@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Phone, MapPin, Calendar, Clock } from "lucide-react";
 
@@ -10,37 +10,91 @@ import { Sparkles, Phone, MapPin, Calendar, Clock } from "lucide-react";
  */
 
 const mandalaImage = "/images/mandala_gold.png";
-const elephantLeft = "/images/elephant_gold_left.png";
-const elephantRight = "/images/elephant_gold_right.png";
+const brideGroomImage = "/images/10.png";
+
+function MandalaFrame() {
+  return (
+    <div className="mandala-frame pointer-events-none fixed inset-0 z-[12] overflow-hidden" aria-hidden="true">
+      <div className="mandala-corner mandala-corner-tr">
+        <img src={mandalaImage} alt="" className="mandala-art" />
+      </div>
+      <div className="mandala-corner mandala-corner-bl">
+        <img src={mandalaImage} alt="" className="mandala-art" />
+      </div>
+      <div className="mandala-corner mandala-corner-tl is-soft">
+        <img src={mandalaImage} alt="" className="mandala-art" />
+      </div>
+      <div className="mandala-corner mandala-corner-br is-soft">
+        <img src={mandalaImage} alt="" className="mandala-art" />
+      </div>
+    </div>
+  );
+}
 
 function FloatingPetals() {
-  const petals = useMemo(() =>
-    Array.from({ length: 25 }, (_, i) => ({
+  const [petals, setPetals] = useState<Array<{
+    id: number;
+    x: number;
+    size: number;
+    rotation: number;
+    duration: number;
+    delay: number;
+    color: string;
+    drift: number;
+  }>>([]);
+
+  useEffect(() => {
+    const colors = ["#f1d6e8", "#e8bdd9", "#dd9ec8", "#fdf7fb"];
+    const newPetals = Array.from({ length: 30 }).map((_, i) => ({
       id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 5,
-      duration: 12 + Math.random() * 10,
-      size: 8 + Math.random() * 12,
+      x: Math.random() * 100,
+      size: Math.random() * 8 + 8,
       rotation: Math.random() * 360,
-    })), []);
+      duration: Math.random() * 15 + 15,
+      delay: Math.random() * 20,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      drift: Math.random() * 40 - 20,
+    }));
+
+    setPetals(newPetals);
+  }, []);
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
-      {petals.map((p) => (
+    <div className="pointer-events-none fixed inset-0 overflow-hidden z-40">
+      {petals.map((petal) => (
         <motion.div
-          key={p.id}
-          className="absolute rounded-full bg-theme-200/20"
-          style={{
-            left: `${p.left}%`,
-            width: p.size,
-            height: p.size * 1.2,
-            borderRadius: "50% 5% 50% 5%",
-            rotate: p.rotation
+          key={petal.id}
+          className="absolute drop-shadow-[0_2px_6px_rgba(243,167,205,0.5)]"
+          style={{ color: petal.color }}
+          initial={{
+            x: `${petal.x}vw`,
+            y: "-10vh",
+            rotate: petal.rotation,
+            opacity: 0,
           }}
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: [0, 1200], opacity: [0, 0.5, 0], rotate: p.rotation + 360 }}
-          transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: "linear" }}
-        />
+          animate={{
+            y: "110vh",
+            x: `${petal.x + petal.drift}vw`,
+            rotate: petal.rotation + 720,
+            opacity: [0, 0.9, 0.8, 0],
+          }}
+          transition={{
+            duration: petal.duration,
+            repeat: Infinity,
+            delay: petal.delay,
+            ease: "linear",
+          }}
+        >
+          <svg
+            width={petal.size}
+            height={petal.size}
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="drop-shadow-sm"
+          >
+            <path d="M12,2C12,2 10,6 10,10C10,14 12,22 12,22C12,22 14,14 14,10C14,6 12,2 12,2Z" />
+          </svg>
+        </motion.div>
       ))}
     </div>
   );
@@ -114,6 +168,7 @@ export default function WeddingInvitation() {
       className={`h-[100dvh] w-full bg-[#fdfaf5] transition-all duration-1000 ${isOpened ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden flex items-center justify-center"
         } relative font-montserrat scroll-smooth`}
     >
+      <MandalaFrame />
       <FloatingPetals />
 
       <AnimatePresence mode="wait">
@@ -142,75 +197,96 @@ export default function WeddingInvitation() {
 
             {/* Gatefold Envelope */}
             <div
-              className="relative w-full max-w-[400px] aspect-[1/1.4] flex items-center justify-center group cursor-pointer perspective-1000"
+              className="relative w-full max-w-[430px] aspect-[1/1.42] flex items-center justify-center group cursor-pointer perspective-1000"
               onClick={() => setIsOpened(true)}
             >
-              <div className="absolute inset-0 bg-[#fffdfa] rounded-xl shadow-2xl border border-theme-100/50 overflow-hidden" />
+              <div className="absolute -inset-8 bg-[radial-gradient(circle,_rgba(243,167,205,0.35)_0%,_rgba(241,214,232,0.2)_45%,_transparent_75%)] blur-3xl opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#fffefb] via-[#fff9f2] to-[#fff6ee] rounded-[1.4rem] shadow-[0_28px_80px_-20px_rgba(82,38,66,0.35)] border border-theme-200/80 overflow-hidden" />
+              <div className="absolute inset-[10px] rounded-[1.05rem] border border-theme-300/45 pointer-events-none" />
+              <div className="absolute inset-0 opacity-[0.07] bg-[url('https://www.transparenttextures.com/patterns/rice-paper-3.png')]" />
+
+              <motion.div
+                initial={{ opacity: 0.15, x: -140 }}
+                animate={{ opacity: [0.08, 0.2, 0.08], x: [-160, 260, -160] }}
+                transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 w-24 bg-gradient-to-r from-transparent via-white/50 to-transparent blur-lg z-20 pointer-events-none"
+              />
+
+              <div className="absolute top-[-1px] left-1/2 -translate-x-1/2 w-[88%] h-[44%] bg-gradient-to-b from-theme-100/90 to-theme-50/60 clip-path-envelope z-10" />
+              <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[84%] h-[39%] border border-theme-300/45 clip-path-envelope z-10 opacity-60" />
 
               {/* Left Flap */}
               <motion.div
-                className="absolute inset-y-0 left-0 w-1/2 bg-[#3a352f] z-20 shadow-[5px_0_15px_rgba(0,0,0,0.3)] origin-left flex items-center justify-end pr-4 overflow-hidden"
-                whileHover={{ rotateY: -10 }}
-                transition={{ type: "spring", stiffness: 100 }}
+                className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-br from-[#3b2a36] via-[#4f3652] to-[#2a1d2d] z-30 shadow-[8px_0_28px_rgba(29,13,27,0.45)] origin-left flex items-center justify-end pr-4 overflow-hidden rounded-l-[1.2rem]"
+                whileHover={{ rotateY: -14 }}
+                transition={{ type: "spring", stiffness: 110, damping: 16 }}
               >
-                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
-                <div className="absolute right-0 top-0 bottom-0 w-1 bg-theme-400/30" />
+                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
+                <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-theme-200 via-theme-400 to-theme-200" />
+                <div className="absolute left-0 top-0 w-full h-full bg-gradient-to-tr from-black/25 via-transparent to-white/10" />
 
                 {/* Envelope Illustrations */}
                 <img
-                  src="/images/envelope_mandala.png"
-                  className="absolute -top-10 -left-10 w-40 h-40 opacity-40 mix-blend-screen"
+                  src={mandalaImage}
+                  className="absolute -top-28 -left-28 w-72 h-72 opacity-55 mix-blend-screen"
                   alt=""
                 />
                 <img
-                  src="/images/envelope_mandala.png"
-                  className="absolute -bottom-10 -left-10 w-40 h-40 opacity-40 mix-blend-screen -rotate-90"
+                  src={mandalaImage}
+                  className="absolute -bottom-28 -left-28 w-72 h-72 opacity-50 mix-blend-screen -rotate-90"
                   alt=""
                 />
 
-                <div className="text-theme-200/20 rotate-90 whitespace-nowrap text-xs tracking-[0.5em] uppercase font-bold relative z-10">
+                <div className="text-theme-100/35 rotate-90 whitespace-nowrap text-xs tracking-[0.55em] uppercase font-bold relative z-10">
                   NIMMI & RISHAN
                 </div>
               </motion.div>
 
               {/* Right Flap */}
               <motion.div
-                className="absolute inset-y-0 right-0 w-1/2 bg-[#3a352f] z-20 shadow-[-5px_0_15px_rgba(0,0,0,0.3)] origin-right flex items-center justify-start pl-4 overflow-hidden"
-                whileHover={{ rotateY: 10 }}
-                transition={{ type: "spring", stiffness: 100 }}
+                className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-[#3b2a36] via-[#4f3652] to-[#2a1d2d] z-30 shadow-[-8px_0_28px_rgba(29,13,27,0.45)] origin-right flex items-center justify-start pl-4 overflow-hidden rounded-r-[1.2rem]"
+                whileHover={{ rotateY: 14 }}
+                transition={{ type: "spring", stiffness: 110, damping: 16 }}
               >
-                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-theme-400/30" />
+                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
+                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-theme-200 via-theme-400 to-theme-200" />
+                <div className="absolute right-0 top-0 w-full h-full bg-gradient-to-tl from-black/25 via-transparent to-white/10" />
 
                 {/* Envelope Illustrations */}
                 <img
-                  src="/images/envelope_mandala.png"
-                  className="absolute -top-10 -right-10 w-40 h-40 opacity-40 mix-blend-screen rotate-90"
+                  src={mandalaImage}
+                  className="absolute -top-28 -right-28 w-72 h-72 opacity-55 mix-blend-screen rotate-90"
                   alt=""
                 />
                 <img
-                  src="/images/envelope_mandala.png"
-                  className="absolute -bottom-10 -right-10 w-40 h-40 opacity-40 mix-blend-screen rotate-180"
+                  src={mandalaImage}
+                  className="absolute -bottom-28 -right-28 w-72 h-72 opacity-50 mix-blend-screen rotate-180"
                   alt=""
                 />
               </motion.div>
 
               {/* The Seal Button */}
               <motion.div
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.1, rotate: -6 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-24 h-24 rounded-full bg-gradient-to-br from-theme-200 via-theme-100 to-theme-300 shadow-2xl border-4 border-[#3a352f] flex items-center justify-center group-hover:shadow-theme-500/20"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-28 h-28 rounded-full bg-gradient-to-br from-theme-200 via-[#fff5fb] to-theme-300 shadow-[0_20px_45px_-10px_rgba(131,63,105,0.65)] border-[5px] border-[#432f3f] flex items-center justify-center group-hover:shadow-theme-500/40"
               >
-                <div className="text-center">
-                  <p className="font-cinzel text-2xl font-bold text-stone-800 leading-none">N&R</p>
-                  <div className="h-px w-10 bg-stone-400 mx-auto my-1.5" />
-                  <p className="text-[8px] uppercase tracking-[0.3em] font-bold text-stone-600">Open</p>
+                <div className="absolute inset-1.5 rounded-full border border-theme-400/50" />
+                <div className="absolute inset-3 rounded-full border border-theme-500/30" />
+                <div className="text-center relative z-10">
+                  <p className="font-cinzel text-[1.7rem] font-bold text-stone-800 leading-none">N&R</p>
+                  <div className="h-px w-12 bg-stone-400 mx-auto my-1.5" />
+                  <p className="text-[8px] uppercase tracking-[0.35em] font-bold text-stone-600">Open</p>
                 </div>
               </motion.div>
 
               {/* Card Preview inside (Mandala) */}
-              <div className="absolute inset-10 opacity-30 flex items-center justify-center">
-                <img src={mandalaImage} alt="" className="w-full h-auto animate-spin-slow mix-blend-multiply" style={{ animationDuration: '20s' }} />
+              <div className="absolute inset-10 opacity-45 flex items-center justify-center z-10">
+                <img src={mandalaImage} alt="" className="w-full h-auto animate-spin-slow mix-blend-multiply" style={{ animationDuration: '24s' }} />
+              </div>
+
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 text-[8px] uppercase tracking-[0.45em] text-theme-700/80 font-bold bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-theme-200/80 shadow-sm">
+                Tap Seal To Open
               </div>
             </div>
 
@@ -223,7 +299,7 @@ export default function WeddingInvitation() {
             key="website-stage"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="relative z-10 w-full"
+            className="website-shell relative z-20 w-full"
           >
             {/* Sticky Return Button */}
             <motion.button
@@ -345,28 +421,15 @@ export default function WeddingInvitation() {
                 </div>
               </motion.div>
 
-              {/* Corner Elephants - very subtle */}
-              <motion.img
-                initial={{ opacity: 0, x: -20, y: 20 }}
-                animate={{ opacity: 0.04, x: 0, y: 0 }}
-                transition={{ delay: 1.5, duration: 2 }}
-                src={elephantLeft}
-                className="absolute bottom-0 left-0 w-32 md:w-64 mix-blend-multiply pointer-events-none"
-              />
-              <motion.img
-                initial={{ opacity: 0, x: 20, y: 20 }}
-                animate={{ opacity: 0.04, x: 0, y: 0 }}
-                transition={{ delay: 1.5, duration: 2 }}
-                src={elephantRight}
-                className="absolute bottom-0 right-0 w-32 md:w-64 mix-blend-multiply pointer-events-none"
-              />
             </section>
 
             {/* Wedding Details Section */}
             <section className="py-24 md:py-32 w-full flex flex-col items-center px-4 relative">
-              <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-20 z-0">
-                <img src={elephantLeft} className="absolute -left-20 top-32 w-[300px] md:w-[600px] h-auto grayscale-[0.5]" alt="" />
-                <img src={elephantRight} className="absolute -right-20 bottom-32 w-[300px] md:w-[600px] h-auto grayscale-[0.5]" alt="" />
+              <div className="section-floral-overlay absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+                <img src={mandalaImage} className="absolute -left-20 md:-left-10 -top-10 md:top-8 w-[260px] md:w-[460px] h-auto mix-blend-multiply opacity-55 -rotate-[8deg]" alt="" />
+                <img src={mandalaImage} className="absolute -right-20 md:-right-10 -top-16 md:top-2 w-[250px] md:w-[430px] h-auto mix-blend-multiply opacity-50 rotate-[12deg]" alt="" />
+                <img src={mandalaImage} className="absolute -left-20 md:-left-6 bottom-2 md:bottom-8 w-[250px] md:w-[420px] h-auto mix-blend-multiply opacity-40 rotate-[180deg]" alt="" />
+                <img src={mandalaImage} className="absolute -right-24 md:-right-8 bottom-0 md:bottom-14 w-[270px] md:w-[470px] h-auto mix-blend-multiply opacity-45 -rotate-[170deg]" alt="" />
               </div>
 
               <div className="max-w-[1000px] w-full flex flex-col items-center text-center relative z-10">
@@ -380,6 +443,23 @@ export default function WeddingInvitation() {
                   <p className="text-theme-700 text-[9px] md:text-[12px] tracking-[0.4em] md:tracking-[0.6em] uppercase font-bold text-center leading-loose">
                     You are cordially invited to<br className="hidden md:block" /> celebrate the union of
                   </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 24, scale: 0.96 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="relative mb-10 md:mb-14"
+                >
+                  <div className="absolute -inset-3 md:-inset-4 rounded-[2rem] bg-theme-200/35 blur-xl" />
+                  <div className="relative bg-white/90 p-2.5 md:p-3 rounded-[2rem] border border-theme-200 shadow-[0_20px_50px_-20px_rgba(131,63,105,0.45)]">
+                    <img
+                      src={brideGroomImage}
+                      alt="Bride and groom wedding illustration"
+                      className="w-[200px] h-[240px] md:w-[270px] md:h-[320px] object-cover rounded-[1.6rem] border border-theme-100"
+                    />
+                  </div>
                 </motion.div>
 
                 <div className="relative w-full flex flex-col md:flex-row items-center justify-center md:items-stretch gap-6 md:gap-10 my-12 md:my-20 z-10 px-2 lg:px-8">
@@ -700,7 +780,7 @@ export default function WeddingInvitation() {
 
               <section className="py-24 md:py-36 relative flex flex-col items-center overflow-hidden">
                 <img src={mandalaImage} alt="" className="absolute top-0 right-0 w-[40vw] max-w-[500px] opacity-[0.04] mix-blend-multiply translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-                <img src={mandalaImage} alt="" className="absolute bottom-40 left-0 w-[40vw] max-w-[500px] opacity-[0.04] mix-blend-multiply -translate-x-1/3 translate-y-1/3 pointer-events-none" />
+                <img src={mandalaImage} alt="" className="absolute bottom-16 left-1/2 w-[38vw] max-w-[360px] opacity-[0.08] mix-blend-multiply -translate-x-1/2 pointer-events-none" />
 
                 <div className="container mx-auto px-4 max-w-4xl text-center relative z-10 w-full">
                   <motion.div
@@ -758,6 +838,16 @@ export default function WeddingInvitation() {
                       </div>
                       <p className="text-[9px] md:text-[11px] uppercase tracking-[0.8em] text-theme-600 font-bold relative z-10 bg-[#fdfaf5] px-6 py-2 rounded-full border border-theme-100/50 shadow-sm">With Love</p>
                       <h3 className="font-playball text-[3.2rem] sm:text-6xl md:text-8xl text-theme-900 relative z-10 drop-shadow-sm px-4 pt-4 leading-none">Nimmi & Rishan</h3>
+
+                      <motion.img
+                        initial={{ opacity: 0, y: 24, scale: 0.95 }}
+                        whileInView={{ opacity: 0.9, y: 0, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.9, ease: "easeOut" }}
+                        src={mandalaImage}
+                        alt=""
+                        className="relative z-10 mt-8 w-40 h-40 md:w-56 md:h-56 object-contain mix-blend-multiply drop-shadow-[0_12px_24px_rgba(188,95,153,0.2)]"
+                      />
                     </div>
                   </motion.div>
                 </div>
@@ -790,7 +880,7 @@ export default function WeddingInvitation() {
           background: #fdfaf5;
         }
         ::-webkit-scrollbar-thumb {
-          background: #6ca073;
+          background: #f3a7cd;
           border-radius: 10px;
         }
       `}} />
