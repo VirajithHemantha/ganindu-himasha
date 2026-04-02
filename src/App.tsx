@@ -17,18 +17,6 @@ const mandalaImage = "/images/mandala_gold.png";
 const brideGroomImage = "/images/10.png";
 const backgroundMusic = "/01-Alex_Warren_-_Ordinary_(Wedding_version).mp3";
 
-function FloralFrame() {
-  return (
-    <div className="mandala-frame pointer-events-none fixed inset-0 z-[12] overflow-hidden" aria-hidden="true">
-      <div className="absolute -top-6 -left-6 w-[35vw] max-w-[450px] opacity-60">
-        <img src={topLeftImage} alt="" className="w-full h-auto mix-blend-multiply" />
-      </div>
-      <div className="absolute -bottom-6 -right-6 w-[35vw] max-w-[450px] opacity-60">
-        <img src={downRightImage} alt="" className="w-full h-auto mix-blend-multiply" />
-      </div>
-    </div>
-  );
-}
 
 function FloatingPetals() {
   const [isLowPowerMode, setIsLowPowerMode] = useState(false);
@@ -280,6 +268,7 @@ export default function WeddingInvitation() {
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-theme-200 via-theme-400 to-theme-200" />
                 <div className="absolute right-0 top-0 w-full h-full bg-gradient-to-tl from-black/25 via-transparent to-white/10" />
 
+
                 {/* Envelope Illustrations */}
                 <img
                   src={mandalaImage}
@@ -329,7 +318,7 @@ export default function WeddingInvitation() {
             animate={{ opacity: 1 }}
             className="website-shell relative z-20 w-full"
           >
-            <FloralFrame />
+
             {/* Sticky Return Button */}
             <motion.button
               initial={{ opacity: 0, x: 20 }}
@@ -484,6 +473,7 @@ export default function WeddingInvitation() {
                 <img src={topLeftImage} className="absolute -left-12 md:-left-6 -top-12 md:-top-6 w-[250px] md:w-[450px] h-auto mix-blend-multiply opacity-25" alt="" />
                 <img src={downRightImage} className="absolute -right-16 md:-right-8 -bottom-16 md:-bottom-8 w-[270px] md:w-[470px] h-auto mix-blend-multiply opacity-25" alt="" />
               </div>
+
 
               <div className="max-w-[1000px] w-full flex flex-col items-center text-center relative z-10">
                 <motion.div
@@ -839,6 +829,7 @@ export default function WeddingInvitation() {
               <section className="cv-auto py-24 md:py-36 relative flex flex-col items-center overflow-hidden">
                 <img src={topLeftImage} alt="" className="absolute top-0 right-0 w-[40vw] max-w-[500px] opacity-[0.08] mix-blend-multiply translate-x-1/3 -translate-y-1/3 pointer-events-none" />
                 <img src={downRightImage} alt="" className="absolute bottom-16 left-1/2 w-[38vw] max-w-[360px] opacity-[0.15] mix-blend-multiply -translate-x-1/2 pointer-events-none" />
+
 
                 <div className="container mx-auto px-4 max-w-4xl text-center relative z-10 w-full">
                   <motion.div
