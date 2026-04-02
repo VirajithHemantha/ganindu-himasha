@@ -188,7 +188,7 @@ export default function WeddingInvitation() {
 
   useEffect(() => {
     if (isOpened && !isPlaying) {
-      audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {});
+      audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => { });
     }
   }, [isOpened]);
 
@@ -197,7 +197,6 @@ export default function WeddingInvitation() {
       className={`h-[100dvh] w-full bg-[#fdfaf5] transition-all duration-1000 ${isOpened ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden flex items-center justify-center"
         } relative font-montserrat scroll-smooth`}
     >
-      <FloralFrame />
       <FloatingPetals />
 
       <AnimatePresence mode="wait">
@@ -330,6 +329,7 @@ export default function WeddingInvitation() {
             animate={{ opacity: 1 }}
             className="website-shell relative z-20 w-full"
           >
+            <FloralFrame />
             {/* Sticky Return Button */}
             <motion.button
               initial={{ opacity: 0, x: 20 }}
@@ -467,7 +467,7 @@ export default function WeddingInvitation() {
                 transition={{ delay: 2.2, duration: 1 }}
                 className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer z-20 group"
               >
-                <span className="text-[8px] md:text-[9px] uppercase tracking-[0.5em] text-theme-800/60 font-bold group-hover:text-theme-800 transition-colors">Scroll to explore</span>
+                <span className="hidden md:block text-[8px] md:text-[9px] uppercase tracking-[0.5em] text-theme-800/60 font-bold group-hover:text-theme-800 transition-colors">Scroll to explore</span>
                 <div className="w-px h-12 md:h-16 relative overflow-hidden bg-theme-200/50 rounded-full">
                   <motion.div
                     animate={{ y: [-40, 60] }}
