@@ -168,11 +168,24 @@ export default function WeddingInvitation() {
     }
   };
 
+  const [hasAttemptedAutoplay, setHasAttemptedAutoplay] = useState(false);
+
   useEffect(() => {
-    if (isOpened && !isPlaying) {
-      audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => { });
+    if (isOpened && !isPlaying && !hasAttemptedAutoplay && audioRef.current) {
+      setHasAttemptedAutoplay(true);
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {
+        const playOnInteraction = () => {
+          if (audioRef.current && !isPlaying) {
+            audioRef.current.play().then(() => {
+              setIsPlaying(true);
+              window.removeEventListener("click", playOnInteraction);
+            }).catch(() => { });
+          }
+        };
+        window.addEventListener("click", playOnInteraction);
+      });
     }
-  }, [isOpened]);
+  }, [isOpened, isPlaying, hasAttemptedAutoplay]);
 
   return (
     <main
