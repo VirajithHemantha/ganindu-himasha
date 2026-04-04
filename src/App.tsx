@@ -208,6 +208,7 @@ export default function WeddingInvitation() {
               autoPlay
               muted
               playsInline
+              preload="auto"
               className="w-full h-full object-cover"
               onEnded={() => setIsOpened(true)}
               onError={() => setIsOpened(true)}
@@ -247,6 +248,8 @@ export default function WeddingInvitation() {
                 <img
                   src="/Gemini_Generated_Image_sszfcfsszfcfsszf (1).png"
                   alt="Wedding Invitation Hero"
+                  loading="eager"
+                  fetchPriority="high"
                   className="w-full h-auto object-cover object-top md:object-contain md:object-top"
                 />
               </picture>
