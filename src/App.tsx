@@ -9,7 +9,7 @@ import { Sparkles, MapPin, Calendar, Clock, Send, ChevronDown } from "lucide-rea
  * Accents: Green/Brown
  */
 
-const brideGroomImage = "/images/10.png";
+const brideGroomImage = "/images/wedding_new.png";
 const backgroundMusic = "/01-Alex_Warren_-_Ordinary_(Wedding_version).mp3";
 const googleScriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL?.trim() || "";
 
@@ -93,7 +93,7 @@ function FloatingPetals() {
   );
 }
 
-function CountdownTimer() {
+function CountdownTimer({ isDark = false }: { isDark?: boolean }) {
   const targetDate = new Date("May 08, 2026 09:30:00").getTime();
   const [timeLeft, setTimeLeft] = useState(targetDate - Date.now());
 
@@ -128,30 +128,36 @@ function CountdownTimer() {
           className="relative group"
         >
           {/* Ornamental Frame container */}
-          <div className="relative w-[4.5rem] h-[6.5rem] sm:w-20 sm:h-28 md:w-32 md:h-44 bg-white rounded-t-full shadow-[0_15px_35px_-10px_rgba(0,0,0,0.08)] border border-theme-100/60 flex flex-col items-center justify-center overflow-hidden transition-transform duration-700 group-hover:-translate-y-3">
+          <div className={`relative w-[4.5rem] h-[6.5rem] sm:w-20 sm:h-28 md:w-32 md:h-44 rounded-t-full shadow-[0_15px_35px_-10px_rgba(0,0,0,0.15)] border flex flex-col items-center justify-center overflow-hidden transition-all duration-700 group-hover:-translate-y-3 ${isDark ? "bg-[#0e4c3c] border-white/20" : "bg-white border-theme-100/60"
+            }`}>
             <div className="absolute top-0 right-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] w-full h-full pointer-events-none" />
-            <div className="absolute inset-1.5 sm:inset-2 md:inset-3 border-[0.5px] border-theme-300/50 rounded-t-full pointer-events-none" />
+            <div className={`absolute inset-1.5 sm:inset-2 md:inset-3 border-[0.5px] rounded-t-full pointer-events-none ${isDark ? "border-white/30" : "border-theme-300/50"
+              }`} />
 
             {/* The Number */}
-            <span className="text-2xl sm:text-3xl md:text-5xl font-playball text-theme-800 leading-none relative z-10 drop-shadow-sm mt-3 sm:mt-4 md:mt-6 transition-transform duration-500 group-hover:scale-110">
+            <span className={`text-2xl sm:text-3xl md:text-5xl font-playball leading-none relative z-10 drop-shadow-sm mt-3 sm:mt-4 md:mt-6 transition-transform duration-500 group-hover:scale-110 ${isDark ? "text-white" : "text-theme-800"
+              }`}>
               {Math.max(0, stat.value).toString().padStart(2, '0')}
             </span>
 
             {/* The Label */}
             <div className="w-full flex justify-center mt-2 sm:mt-3 md:mt-6 mb-1 sm:mb-2 relative z-10">
-              <span className="text-[5px] sm:text-[6px] md:text-[8px] uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] text-stone-500 font-bold px-2 sm:px-3 py-1 sm:py-1.5 bg-stone-50 rounded-full border border-theme-100/50 shadow-sm whitespace-nowrap">
+              <span className={`text-[5px] sm:text-[6px] md:text-[8px] uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border shadow-sm whitespace-nowrap ${isDark ? "bg-white/10 text-white border-white/20" : "bg-stone-50 text-stone-500 border-theme-100/50"
+                }`}>
                 {stat.label}
               </span>
             </div>
 
             {/* Bottom decoration */}
-            <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 w-[3px] h-[3px] sm:w-1 sm:h-1 md:w-1.5 md:h-1.5 rotate-45 bg-theme-300" />
+            <div className={`absolute bottom-2 sm:bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 w-[3px] h-[3px] sm:w-1 sm:h-1 md:w-1.5 md:h-1.5 rotate-45 ${isDark ? "bg-white/40" : "bg-theme-300"
+              }`} />
           </div>
         </motion.div>
       ))}
     </div>
   );
 }
+
 
 export default function WeddingInvitation() {
   const [isOpened, setIsOpened] = useState(false);
@@ -334,11 +340,11 @@ export default function WeddingInvitation() {
                 transition={{ delay: 1.5, duration: 1 }}
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
               >
-                <div className="w-px h-12 bg-gradient-to-b from-[#87937a]/40 to-transparent rounded-full overflow-hidden">
+                <div className="w-px h-12 bg-gradient-to-b from-[#0e4c3c]/40 to-transparent rounded-full overflow-hidden">
                   <motion.div
                     animate={{ y: [-48, 48] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-full h-1/2 bg-[#c5a059]/60"
+                    className="w-full h-1/2 bg-[#d48181]/60"
                   />
                 </div>
               </motion.div>
@@ -346,25 +352,52 @@ export default function WeddingInvitation() {
 
             {/* Wedding Details Section */}
             {/* Wedding Details Section - Inspiration Redesign */}
-            <section className="relative pt-12 md:pt-20 pb-24 md:pb-32 w-full flex flex-col items-center bg-[#ccbaa2]/10 overflow-hidden">
+            <section className="relative pt-12 md:pt-20 pb-24 md:pb-32 w-full flex flex-col items-center bg-[#f4cfcf]/10 overflow-hidden">
               {/* Subtle Paper Texture Background */}
               <div className="absolute inset-0 opacity-[0.06] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
 
               {/* Ornate Frame Border Overlay */}
-              <div className="absolute inset-4 md:inset-8 border-[1.5px] border-[#87937a]/30 pointer-events-none z-10" />
+              <div className="absolute inset-4 md:inset-8 border-[1.5px] border-[#4a5d23]/30 pointer-events-none z-10" />
               <div className="absolute inset-5 md:inset-10 border-[0.5px] border-[#c1b199]/20 pointer-events-none z-10" />
 
               <div className="max-w-[1100px] w-full flex flex-col items-center text-center relative z-20 px-6">
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center mb-16 space-y-6"
+                >
+                  <div className="flex items-center gap-4 opacity-40">
+                    <div className="h-px w-8 bg-[#0e4c3c]" />
+                    <Sparkles className="w-4 h-4 text-[#d48181]" />
+                    <div className="h-px w-8 bg-[#0e4c3c]" />
+                  </div>
+
+                  <div className="text-[#0e4c3c] space-y-4">
+                    <div className="space-y-4 mb-8">
+                      <p className="font-cinzel text-[11px] md:text-sm tracking-[0.4em] mb-2 uppercase font-bold">Two Families Join Hands</p>
+                      <div className="flex flex-col items-center justify-center gap-2">
+                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700">Mr. Nimal D. & Mrs. Sunila D.</span>
+                        <span className="font-playball text-2xl text-[#d48181] italic my-2">Together with</span>
+                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700">Mr. Wijaya S. & Mrs. Kamala S.</span>
+                      </div>
+                    </div>
+
+                    <p className="text-[10px] md:text-[13px] tracking-[0.2em] md:tracking-[0.4em] uppercase font-medium leading-loose max-w-3xl border-t border-b border-[#f4cfcf]/50 py-6">
+                      With hearts full of love, we request the honour of the presence of<br />
+                      <span className="text-[#d48181] font-bold text-xs md:text-sm my-2 block">Our Honored Guests</span>
+                      to celebrate the joyous marriage of our children
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="flex flex-col items-center mb-16"
+                  className="mb-8"
                 >
-                  <p className="text-[#87937a] text-[10px] md:text-[12px] tracking-[0.3em] md:tracking-[0.5em] uppercase font-bold text-center leading-loose max-w-2xl">
-                    <span className="mb-4 block opacity-70">Mr. Montegue Sarachchandra & Mrs. Sarojini Nanayakkara<br />Together with<br />Mr. Prasanna Indrajith Hettiarachchi & Mrs. Manel Herath</span>
-                    Request the honour of the presence of Mr. & Mrs./Miss/Family<br className="hidden md:block" /> to celebrate the marriage of their children
-                  </p>
+                  <h2 className="font-cinzel text-xl md:text-2xl text-[#d48181] tracking-[0.5em] font-bold uppercase">Wedding Celebration</h2>
                 </motion.div>
 
                 {/* Overlapping Paper Cards Effect */}
@@ -374,9 +407,9 @@ export default function WeddingInvitation() {
                     initial={{ opacity: 0, x: -40, rotate: -3 }}
                     whileInView={{ opacity: 1, x: 0, rotate: -3 }}
                     viewport={{ once: true }}
-                    className="relative z-10 w-[280px] h-[340px] md:w-[350px] md:h-[450px] bg-white p-4 shadow-[0_20px_50px_rgba(135,147,122,0.15)] border border-[#ccbaa2]/40 rotate-[-3deg] md:-mr-16"
+                    className="relative z-10 w-[280px] h-[340px] md:w-[350px] md:h-[450px] bg-white p-4 shadow-[0_20px_50px_rgba(135,147,122,0.15)] border border-[#f4cfcf]/40 rotate-[-3deg] md:-mr-16"
                   >
-                    <div className="w-full h-full overflow-hidden border border-[#ccbaa2]/20">
+                    <div className="w-full h-full overflow-hidden border border-[#f4cfcf]/20">
                       <img
                         src={brideGroomImage}
                         alt="Wedding"
@@ -390,26 +423,47 @@ export default function WeddingInvitation() {
                     initial={{ opacity: 0, x: 40, y: 40 }}
                     whileInView={{ opacity: 1, x: 0, y: 20 }}
                     viewport={{ once: true }}
-                    className="relative z-20 w-full max-w-[450px] bg-white p-8 md:p-14 shadow-[0_30px_70px_-15px_rgba(135,147,122,0.2)] border border-[#ccbaa2]/50 flex flex-col items-center justify-center text-center"
+                    className="relative z-20 w-full max-w-[450px] bg-white p-8 md:p-14 shadow-[0_30px_70px_-15px_rgba(135,147,122,0.2)] border border-[#f4cfcf]/50 flex flex-col items-center justify-center text-center"
                   >
-                    <div className="absolute inset-2 border-[0.5px] border-[#c5a059]/30 pointer-events-none" />
+                    <div className="absolute inset-2 border-[0.5px] border-[#d48181]/30 pointer-events-none" />
 
-                    <div className="space-y-2 mb-8">
-                      <p className="text-[8px] uppercase tracking-[0.4em] font-bold text-[#87937a]/60">Loving daughter of</p>
-                      <p className="text-[11px] font-cinzel text-[#87937a] tracking-wider">Mr. Montegue Sarachchandra<br />& Mrs. Sarojini Nanayakkara</p>
-                      <h3 className="text-4xl md:text-6xl font-playball text-[#c5a059] pt-4 leading-none">Umayangana</h3>
+                    <div className="space-y-3 mb-10">
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-[8px] uppercase tracking-[0.6em] font-bold text-[#0e4c3c]/50">Our Precious</span>
+                        <h3 className="text-5xl md:text-7xl font-playball text-[#d48181] leading-none">Dasni</h3>
+                      </div>
+                      <div className="pt-2">
+                        <p className="text-[9px] uppercase tracking-[0.3em] text-[#0e4c3c]/70 font-semibold">Cherished daughter of</p>
+                        <p className="text-[12px] font-cinzel text-[#0e4c3c] tracking-wide mt-1">
+                          Mr. Nimal D.<br />
+                          <span className="text-[#d48181] px-2 italic">&</span>
+                          Mrs. Sunila D.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="py-6 flex items-center justify-center w-full">
-                      <div className="h-px w-full bg-[#ccbaa2]/30" />
-                      <span className="px-6 font-playball text-4xl text-[#c5a059] italic">&</span>
-                      <div className="h-px w-full bg-[#ccbaa2]/30" />
+                    <div className="py-2 flex items-center justify-center w-full relative">
+                      <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                        <div className="w-full border-t border-[#f4cfcf]/50"></div>
+                      </div>
+                      <div className="relative flex justify-center">
+                        <span className="bg-white px-6 font-playball text-4xl text-[#d48181]">With</span>
+                      </div>
                     </div>
 
-                    <div className="space-y-2 mt-8">
-                      <p className="text-[8px] uppercase tracking-[0.4em] font-bold text-[#87937a]/60">Loving son of</p>
-                      <p className="text-[11px] font-cinzel text-[#87937a] tracking-wider">Mr. Prasanna Indrajith Hettiarachchi<br />& Mrs. Manel Herath</p>
-                      <h3 className="text-4xl md:text-6xl font-playball text-[#c5a059] pt-4 leading-none">Ashan</h3>
+                    <div className="space-y-3 mt-10">
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-[8px] uppercase tracking-[0.6em] font-bold text-[#0e4c3c]/50">Our Beloved</span>
+                        <h3 className="text-5xl md:text-7xl font-playball text-[#d48181] leading-none">Sandaru</h3>
+                      </div>
+                      <div className="pt-2">
+                        <p className="text-[9px] uppercase tracking-[0.3em] text-[#0e4c3c]/70 font-semibold">Treasured son of</p>
+                        <p className="text-[12px] font-cinzel text-[#0e4c3c] tracking-wide mt-1">
+                          Mr. Wijaya S.<br />
+                          <span className="text-[#d48181] px-2 italic">&</span>
+                          Mrs. Kamala S.
+                        </p>
+                      </div>
                     </div>
                   </motion.div>
                 </div>
@@ -433,104 +487,235 @@ export default function WeddingInvitation() {
             </motion.div>
 
             {/* Countdown Section - Inspiration Redesign */}
-            <section className="relative py-24 md:py-36 bg-[#87937a]/5 flex flex-col items-center overflow-hidden">
-              {/* Background Texture and Accent Orbs */}
-              <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ccbaa2] blur-[120px] rounded-full opacity-20" />
+            {/* Countdown Section - Premium Deep Green Redesign */}
+            <section className="relative py-28 md:py-48 bg-[#0e4c3c] flex flex-col items-center overflow-hidden">
+              {/* Refined Decorative Background Elements */}
+              <div className="absolute inset-0 opacity-[0.08] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/20 via-transparent to-black/20 pointer-events-none" />
 
-              <div className="w-full max-w-[1000px] px-6 flex flex-col items-center text-center relative z-10">
+              {/* Floating Decorative Shapes */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 0.1, scale: 1 }}
+                transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+                className="absolute -top-24 -right-24 w-96 h-96 bg-white blur-[100px] rounded-full pointer-events-none"
+              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 0.1, scale: 1 }}
+                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", delay: 1 }}
+                className="absolute -bottom-24 -left-24 w-96 h-96 bg-white blur-[100px] rounded-full pointer-events-none"
+              />
+
+              <div className="w-full max-w-[1200px] px-6 flex flex-col items-center text-center relative z-10">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="relative mb-16"
+                  transition={{ duration: 1 }}
+                  className="relative mb-20"
                 >
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-playball text-[15vw] md:text-[180px] text-[#87937a]/5 whitespace-nowrap pointer-events-none select-none">
+                  {/* Backdrop Title */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-playball text-[18vw] md:text-[220px] text-white/5 whitespace-nowrap pointer-events-none select-none tracking-wider">
                     Eternity
                   </div>
-                  <h2 className="font-cinzel text-3xl md:text-5xl text-[#c5a059] tracking-[0.2em] md:tracking-[0.3em] font-bold relative z-10 uppercase">
-                    SAVE <span className="mx-4 text-[#87937a]">THE</span> DATE
-                  </h2>
-                  <div className="mt-8 flex items-center justify-center gap-4">
-                    <div className="h-[0.5px] w-12 bg-[#ccbaa2]" />
-                    <span className="font-playball text-4xl text-[#87937a]">Wait for the magic</span>
-                    <div className="h-[0.5px] w-12 bg-[#ccbaa2]" />
+
+                  {/* Main Title Container */}
+                  <div className="relative z-10 flex flex-col items-center">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "80px" }}
+                      viewport={{ once: true }}
+                      className="h-px bg-white/40 mb-8"
+                    />
+
+                    <h2 className="font-cinzel text-3xl md:text-6xl text-white tracking-[0.25em] md:tracking-[0.4em] font-bold uppercase leading-tight">
+                      SAVE <span className="mx-2 md:mx-4 text-[#e3cfac]">THE</span> DATE
+                    </h2>
+
+                    <div className="mt-10 flex items-center justify-center gap-6">
+                      <div className="h-[0.5px] w-8 md:w-16 bg-[#e3cfac]/50" />
+                      <span className="font-playball text-3xl md:text-5xl text-[#e3cfac] drop-shadow-md">08 . 05 . 2026</span>
+                      <div className="h-[0.5px] w-8 md:w-16 bg-[#e3cfac]/50" />
+                    </div>
                   </div>
                 </motion.div>
 
-                <CountdownTimer />
+                {/* Countdown Component with Dark Theme */}
+                <CountdownTimer isDark={true} />
 
-                <p className="mt-16 text-[9px] uppercase tracking-[0.6em] text-[#87937a] font-bold opacity-60">
-                  Counting down to our special day
-                </p>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 0.8 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.8 }}
+                  className="mt-20 flex flex-col items-center gap-4"
+                >
+                  <p className="text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-white font-bold text-center">
+                    Wait for the magic
+                  </p>
+                  <div className="flex gap-2">
+                    {[1, 2, 3].map((i) => (
+                      <motion.div
+                        key={i}
+                        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 1, 0.3] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: i * 0.4 }}
+                        className="w-1 h-1 bg-[#e3cfac] rotate-45"
+                      />
+                    ))}
+                  </div>
+                </motion.div>
               </div>
             </section>
 
-            {/* Venue Location Section - Inspiration Redesign */}
-            <section className="relative py-24 md:py-36 bg-white overflow-hidden">
-              <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
 
-              <div className="container mx-auto px-6 max-w-6xl relative z-10">
-                <div className="grid lg:grid-cols-2 gap-20 items-center">
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="space-y-12"
-                  >
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-4 mb-2">
-                        <div className="w-12 h-[1px] bg-[#87937a]" />
-                        <span className="text-[#87937a] font-bold uppercase tracking-[0.4em] text-[10px]">T H E · V E N U E</span>
-                      </div>
-                      <h2 className="font-cinzel text-[2.5rem] md:text-[4rem] text-[#c5a059] leading-tight tracking-widest font-bold uppercase">
-                        GRAND BALLROOM
-                      </h2>
-                      <p className="font-playball text-3xl md:text-5xl text-[#87937a] italic mt-2">Galleface Hotel</p>
+            {/* Venue Location Section - Premium Artistic Redesign */}
+            <section className="relative py-28 md:py-48 bg-[#fdfaf5] overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
+
+              {/* Decorative Geometric Elements (CSS-Based UI Decorations) */}
+              <div className="absolute -top-24 -left-24 w-[500px] h-[500px] border border-[#d48181]/10 rounded-full flex items-center justify-center opacity-30 pointer-events-none">
+                <div className="w-[80%] h-[80%] border border-[#0e4c3c]/10 rounded-full" />
+                <div className="w-[60%] h-[60%] border border-[#d48181]/10 rounded-full" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-full bg-gradient-to-b from-transparent via-[#d48181]/20 to-transparent rotate-45" />
+              </div>
+
+              <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-10 mb-24"
+                >
+                  <div className="flex flex-col items-center gap-4">
+                    <span className="text-[#0e4c3c] font-bold uppercase tracking-[0.8em] text-[10px] md:text-xs opacity-40">T H E · V E N U E</span>
+                    <div className="flex items-center gap-2">
+                      {[1, 2, 3].map((i) => (
+                        <div key={i} className={`w-1.5 h-1.5 rotate-45 ${i === 2 ? "bg-[#d48181]" : "bg-[#0e4c3c]/20"}`} />
+                      ))}
                     </div>
+                  </div>
 
-                    <div className="space-y-8 pl-6 border-l border-[#ccbaa2]/40">
-                      <div className="flex items-start gap-4">
-                        <MapPin className="w-5 h-5 text-[#87937a] mt-1 shrink-0" />
-                        <p className="text-lg md:text-xl text-[#87937a] font-cinzel leading-relaxed tracking-wide">
-                          Galleface Hotel, Colombo, Sri Lanka.
-                        </p>
-                      </div>
-                      <p className="text-[#87937a]/70 text-sm md:text-base tracking-widest uppercase font-light leading-loose">
-                        We look forward to welcoming you to this beautiful sanctuary to celebrate our special day amidst nature's elegance.
-                      </p>
-                    </div>
+                  <h2 className="font-cinzel text-5xl md:text-9xl text-[#d48181] leading-tight font-light uppercase tracking-tight relative">
+                    HOTEL <span className="block md:inline font-playball normal-case text-4xl md:text-8xl text-[#0e4c3c] md:-ml-8 relative z-10 translate-y-4 md:translate-y-0 italic drop-shadow-sm">Jetwing</span>
+                  </h2>
 
-                    <button
-                      onClick={() => window.open('https://maps.app.goo.gl/bJYHccKbNMgZMVar6', '_blank')}
-                      className="group relative inline-flex items-center gap-4 px-10 py-5 bg-[#87937a] text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] overflow-hidden transition-all hover:bg-[#7a866d]"
+                  <div className="max-w-xl mx-auto pt-10 relative">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-[#f4cfcf]" />
+                    <p className="text-[#0e4c3c]/80 text-sm md:text-base tracking-[0.2em] font-medium uppercase font-cinzel leading-loose pt-8">
+                      WHERE THE WHISPER OF WAVES MEETS THE GRACE OF HERITAGE
+                    </p>
+                  </div>
+                </motion.div>
+
+                <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+                  {/* Left: Atmospheric Location Card */}
+                  <div className="lg:col-span-5 text-left order-2 lg:order-1">
+                    <motion.div
+                      initial={{ opacity: 0, x: -40 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2, duration: 0.8 }}
+                      className="bg-white p-10 md:p-16 shadow-[0_60px_100px_-40px_rgba(135,147,122,0.2)] border border-[#f4cfcf]/30 relative group"
                     >
-                      <MapPin className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
-                      Get Directions
-                    </button>
-                  </motion.div>
+                      {/* Interactive hover ornament */}
+                      <div className="absolute inset-2 border-[0.5px] border-[#d48181]/20 pointer-events-none group-hover:border-[#d48181]/40 transition-colors duration-700" />
 
-                  {/* Arched Map Card - Styled like a physical card */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="relative w-full aspect-[3/4] max-w-[450px] mx-auto bg-white p-3 shadow-[0_40px_80px_-20px_rgba(135,147,122,0.2)] border border-[#ccbaa2]/50"
-                  >
-                    <div className="absolute inset-2 border-[0.5px] border-[#c5a059]/30 pointer-events-none z-20" />
-                    <div className="w-full h-full overflow-hidden bg-white relative">
+                      <div className="space-y-12 relative z-10">
+                        <div className="space-y-6">
+                          <p className="text-[#0e4c3c] text-xl md:text-2xl font-light italic leading-relaxed font-playball text-center lg:text-left">
+                            "May our celebration be as infinite as the ocean and as warm as the tropical sun."
+                          </p>
+                          <div className="h-0.5 w-12 bg-[#f4cfcf]/60 mx-auto lg:ml-0" />
+                        </div>
+
+                        <div className="space-y-10">
+                          <div className="flex items-start gap-8">
+                            <div className="w-12 h-12 rounded-full border border-[#d48181]/20 flex items-center justify-center shrink-0">
+                              <MapPin className="w-5 h-5 text-[#d48181]" />
+                            </div>
+                            <div className="space-y-3">
+                              <h4 className="text-[#0e4c3c]/40 font-bold text-[10px] uppercase tracking-[0.5em] font-cinzel">The Destination</h4>
+                              <p className="text-xl md:text-2xl text-[#0e4c3c] font-cinzel leading-relaxed tracking-wide font-bold">
+                                Hotel Jetwing, Negombo,<br className="hidden md:block" />
+                                Sri Lanka.
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-start gap-8">
+                            <div className="w-12 h-12 rounded-full border border-[#d48181]/20 flex items-center justify-center shrink-0">
+                              <Clock className="w-5 h-5 text-[#d48181]" />
+                            </div>
+                            <div className="space-y-1">
+                              <h4 className="text-[#0e4c3c]/40 font-bold text-[10px] uppercase tracking-[0.5em] font-cinzel">The Reception</h4>
+                              <p className="text-xl md:text-2xl text-[#0e4c3c] font-cinzel leading-relaxed tracking-wide font-bold">
+                                Seven in the evening
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={() => window.open('https://maps.google.com/maps?q=Hotel%20Jetwing,%20Negombo&t=', '_blank')}
+                          className="w-full group relative inline-flex items-center justify-center gap-4 py-6 bg-[#0e4c3c] text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] overflow-hidden transition-all hover:bg-black shadow-xl mt-4"
+                        >
+                          <div className="absolute inset-0 bg-white/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
+                          <span className="relative z-10 flex items-center gap-3">
+                            <MapPin className="w-4 h-4" />
+                            Launch Digital Map
+                          </span>
+                        </button>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Right: Architectural Map Frame */}
+                  <div className="lg:col-span-7 order-1 lg:order-2">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.2, ease: "circOut" }}
+                      className="relative w-full aspect-[4/3] md:aspect-video lg:aspect-[4/3] rounded-[3rem] overflow-hidden shadow-[0_80px_150px_-30px_rgba(0,0,0,0.25)] group bg-white"
+                    >
+                      {/* The Map */}
                       <iframe
-                        src="https://maps.google.com/maps?q=Grand%20Ballroom,%20Galle%20Face%20Hotel,%20Colombo,%20Sri%20Lanka&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                        src="https://maps.google.com/maps?q=Hotel%20Jetwing,%20Negombo&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
                         allowFullScreen
                         loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        className="w-full h-full grayscale-[0.8] contrast-110 sepia-[0.3] opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
+                        className="w-full h-full grayscale-[0.85] contrast-150 sepia-[0.2] brightness-[1.05] hover:grayscale-0 hover:sepia-0 hover:contrast-100 transition-all duration-1000 scale-[1.02] group-hover:scale-100"
                       />
-                    </div>
-                  </motion.div>
+
+                      {/* Decorative Frame Overlays */}
+                      <div className="absolute inset-0 pointer-events-none border-[15px] md:border-[25px] border-white/95 rounded-[3rem]" />
+                      <div className="absolute inset-8 md:inset-12 pointer-events-none border border-white/20 rounded-[2.5rem]" />
+
+                      {/* Arched Corner Floating Element (No image used) */}
+                      <div className="absolute top-0 right-0 w-40 h-40 bg-white/90 backdrop-blur-md flex flex-col items-center justify-center rounded-bl-full shadow-2xl p-8 transform translate-x-4 -translate-y-4 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-700">
+                        <MapPin className="w-8 h-8 text-[#0e4c3c] mb-2 opacity-80" />
+                        <span className="text-[8px] font-bold uppercase tracking-widest text-[#0e4c3c]/50">Explore</span>
+                      </div>
+
+                      {/* Subtle lens flare overlay */}
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-[#d48181]/5 to-transparent mix-blend-overlay" />
+                    </motion.div>
+
+                    {/* Bottom Floating Card Decoration */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.6 }}
+                      className="inline-flex items-center gap-4 mt-8 px-8 py-3 bg-white border border-[#f4cfcf]/40 shadow-lg rounded-full"
+                    >
+                      <Sparkles className="w-4 h-4 text-[#d48181]" />
+                      <span className="text-[10px] md:text-xs font-bold text-[#0e4c3c] uppercase tracking-widest">Negombo, Sri Lanka</span>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -638,7 +823,7 @@ export default function WeddingInvitation() {
                           <button
                             type="submit"
                             disabled={rsvpStatus === "sending"}
-                            className="w-full bg-[#708da9] text-white py-4 md:py-5 rounded-xl font-cinzel text-xs md:text-sm tracking-[0.2em] font-bold hover:bg-[#5d7d9a] transition-all shadow-md uppercase disabled:opacity-70"
+                            className="w-full bg-[#0e4c3c] text-white py-4 md:py-5 rounded-xl font-cinzel text-xs md:text-sm tracking-[0.2em] font-bold hover:bg-[#1a5c4a] transition-all shadow-md uppercase disabled:opacity-70"
                           >
                             {rsvpStatus === "sending" ? "SENDING..." : "CLICK HERE TO CONFIRM"}
                           </button>
@@ -655,44 +840,67 @@ export default function WeddingInvitation() {
                   <div className="h-px w-24 bg-slate-300" />
                   <p className="text-slate-500 text-[10px] tracking-[0.4em] font-bold uppercase mt-2">RSVP Contacts</p>
                   <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-slate-500 text-[10px] md:text-sm tracking-widest font-normal opacity-80 decoration-slate-300 underline-offset-4">
-                    <p>Umayangana: 071 5396933</p>
-                    <p>Ashan: 071 2727407</p>
-                    <p>Mr. Montegue: 071 4721366</p>
+                    <p>Dasni: 011 2345678</p>
+                    <p>Sandaru: 011 8765432</p>
+                    <p>Mr. Nimal D.: 011 1111111</p>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* Wishing Section and Footer Wrapper - Inspiration Redesign */}
-            <div className="relative bg-[#ccbaa2]/10">
-              <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
+            {/* Wishing Section - Premium Artistic Redesign */}
+            <section className="relative py-28 md:py-48 bg-[#fdfaf5] overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] pointer-events-none" />
 
-              <section className="relative py-24 md:py-36 flex flex-col items-center overflow-hidden">
-                <div className="container mx-auto px-4 max-w-4xl text-center relative z-10 w-full">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col items-center"
-                  >
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#87937a]/10 mb-8 mt-4 shadow-sm border border-[#87937a]/20">
-                      <Sparkles className="w-8 h-8 text-[#87937a]" />
-                    </div>
+              {/* Large Background Text Ornament */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-playball text-[15vw] text-[#d48181]/5 whitespace-nowrap pointer-events-none select-none italic">
+                Sweet Messages
+              </div>
 
-                    <h2 className="font-playball text-[3.5rem] sm:text-[4rem] md:text-[5.5rem] text-[#c5a059] mb-6 drop-shadow-sm leading-none">Best Wishes</h2>
-                    <div className="h-px w-24 bg-[#ccbaa2] mb-8" />
+              <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-6 mb-20"
+                >
+                  <div className="flex flex-col items-center gap-3">
+                    <span className="text-[#0e4c3c] font-bold uppercase tracking-[0.6em] text-[10px] md:text-xs opacity-50">GUESTBOOK</span>
+                    <div className="h-px w-16 bg-[#d48181]/30" />
+                  </div>
 
-                    <p className="text-[#87937a] text-sm md:text-lg leading-relaxed max-w-xl mx-auto mb-16 font-light tracking-[0.1em] px-4 uppercase">
-                      Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a message, we would be delighted to read it!
-                    </p>
+                  <h2 className="font-playball text-5xl md:text-8xl text-[#d48181] leading-none drop-shadow-sm italic">
+                    Best Wishes
+                  </h2>
 
-                    {/* Physical Paper Form Styled wishing card */}
-                    <div className="w-full max-w-2xl mx-auto bg-white p-8 md:p-14 shadow-[0_30px_70px_-15px_rgba(135,147,122,0.1)] border border-[#ccbaa2]/50 relative group">
-                      <div className="absolute inset-2 border-[0.5px] border-[#c5a059]/20 pointer-events-none transition-colors duration-700" />
+                  <p className="text-[#0e4c3c]/70 text-xs md:text-sm tracking-[0.3em] font-medium uppercase font-cinzel max-w-xl mx-auto pt-4 leading-loose">
+                    Your love and presence are the greatest gifts. If you wish to leave a note, we'd be honored.
+                  </p>
+                </motion.div>
 
-                      <form className="space-y-12 text-left relative z-10" onSubmit={handleWishSubmit}>
-                        <div className="space-y-4">
-                          <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#87937a]/40">From</label>
+                {/* Refined Stationery Form */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="max-w-3xl mx-auto"
+                >
+                  <div className="bg-white p-10 md:p-20 shadow-[0_40px_100px_-20px_rgba(135,147,122,0.15)] border border-[#f4cfcf]/40 relative overflow-hidden">
+                    {/* Inner elegant border */}
+                    <div className="absolute inset-4 border border-[#f4cfcf]/20 pointer-events-none" />
+                    <div className="absolute inset-6 border-[0.5px] border-[#d48181]/10 pointer-events-none" />
+
+                    {/* Corner Ornaments */}
+                    <div className="absolute top-4 left-4 w-12 h-12 border-t border-l border-[#d48181]/40 rounded-tl-xl" />
+                    <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-[#d48181]/40 rounded-br-xl" />
+
+                    <form className="space-y-16 text-left relative z-10" onSubmit={handleWishSubmit}>
+                      <div className="space-y-6 group">
+                        <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#0e4c3c]/40 group-focus-within:text-[#d48181] transition-colors">
+                          From
+                        </label>
+                        <div className="relative">
                           <input
                             type="text"
                             placeholder="YOUR NAME"
@@ -701,70 +909,84 @@ export default function WeddingInvitation() {
                               setWishStatus("idle");
                               setWishForm((prev) => ({ ...prev, name: e.target.value }));
                             }}
-                            className="w-full bg-transparent border-b border-[#ccbaa2]/40 px-0 py-4 text-[#87937a] placeholder:text-[#ccbaa2]/30 focus:outline-none focus:border-[#c5a059] transition-all font-cinzel text-lg tracking-widest"
+                            className="w-full bg-transparent border-b border-[#f4cfcf]/60 px-0 py-4 text-[#0e4c3c] placeholder:text-[#f4cfcf]/30 focus:outline-none focus:border-[#0e4c3c] transition-all font-cinzel text-xl tracking-widest uppercase"
                             required
                           />
+                          <div className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#0e4c3c] transition-all duration-500 group-focus-within:w-full" />
                         </div>
-                        <div className="space-y-4">
-                          <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#87937a]/40">Message</label>
+                      </div>
+
+                      <div className="space-y-6 group">
+                        <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#0e4c3c]/40 group-focus-within:text-[#d48181] transition-colors">
+                          Your Message
+                        </label>
+                        <div className="relative">
                           <textarea
                             rows={4}
-                            placeholder="WISHES..."
+                            placeholder="WISHES FOR THE NEWLYWEDS..."
                             value={wishForm.message}
                             onChange={(e) => {
                               setWishStatus("idle");
                               setWishForm((prev) => ({ ...prev, message: e.target.value }));
                             }}
-                            className="w-full bg-transparent border-b border-[#ccbaa2]/40 px-0 py-4 text-[#87937a] placeholder:text-[#ccbaa2]/30 focus:outline-none focus:border-[#c5a059] transition-all font-cinzel text-lg tracking-widest resize-none"
+                            className="w-full bg-transparent border-b border-[#f4cfcf]/60 px-0 py-4 text-[#0e4c3c] placeholder:text-[#f4cfcf]/30 focus:outline-none focus:border-[#0e4c3c] transition-all font-cinzel text-lg tracking-widest resize-none leading-relaxed"
                             required
                           />
+                          <div className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#0e4c3c] transition-all duration-500 group-focus-within:w-full" />
                         </div>
+                      </div>
+
+                      {/* Success/Error States */}
+                      <AnimatePresence>
                         {(wishStatus === "success" || wishStatus === "error") && (
-                          <p className={`text-[10px] text-center font-semibold ${wishStatus === "success" ? "text-emerald-700" : "text-red-500"}`}>
-                            {wishStatus === "success" ? "Wish sent successfully." : "Please enter your name and wish."}
-                          </p>
-                        )}
-                        <div className="pt-6 flex justify-center">
-                          <button
-                            type="submit"
-                            disabled={wishStatus === "sending"}
-                            className="bg-[#87937a] text-white px-12 py-5 font-bold uppercase tracking-[0.4em] text-[10px] hover:bg-[#7a866d] transition-all duration-300 shadow-md disabled:opacity-70"
+                          <motion.p
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className={`text-[10px] text-center font-bold tracking-widest uppercase ${wishStatus === "success" ? "text-emerald-600" : "text-red-500"}`}
                           >
+                            {wishStatus === "success" ? "Message sent with love" : "Please complete the form"}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+
+                      <div className="pt-8 flex justify-center">
+                        <button
+                          type="submit"
+                          disabled={wishStatus === "sending"}
+                          className="group relative px-16 py-6 bg-[#0e4c3c] text-white font-bold uppercase tracking-[0.5em] text-[10px] hover:bg-slate-900 transition-all duration-500 shadow-xl disabled:opacity-70 overflow-hidden"
+                        >
+                          <div className="absolute inset-0 bg-white/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500" />
+                          <span className="relative z-10 flex items-center gap-3">
+                            <Send className="w-3.5 h-3.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             {wishStatus === "sending" ? "Sending..." : "Send Wishes"}
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-
-                  </motion.div>
-                </div>
-              </section>
-
-              {/* Conclusion Section & Footer */}
-              <footer className="py-24 md:py-40 flex flex-col items-center text-center relative z-10 px-6">
-                <div className="h-px w-24 bg-[#ccbaa2] mb-16 opacity-50" />
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="space-y-6"
-                >
-                  <p className="font-playball text-5xl md:text-7xl text-[#c5a059] leading-tight">With Love,</p>
-                  <h2 className="font-cinzel text-2xl md:text-4xl text-[#87937a] tracking-[0.4em] md:tracking-[0.6em] uppercase font-bold">
-                    UMAYANGANA <span className="mx-2 md:mx-4 opacity-40 font-light">&</span> ASHAN
-                  </h2>
+                          </span>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 </motion.div>
+              </div>
+            </section>
 
-                <div className="mt-24 md:mt-36 pt-12 border-t border-[#ccbaa2]/20 w-full max-w-sm">
-                  <p className="text-[8px] md:text-[10px] uppercase tracking-[0.6em] text-[#87937a]/50 font-bold leading-loose">
-                    © 2026 Umayangana & Ashan<br className="md:hidden" />
-                    <span className="hidden md:inline mx-4">|</span>
-                    All rights reserved.
-                  </p>
+            {/* Final Conclusion Image - Full Width, No Crop */}
+            <section className="w-full relative overflow-hidden bg-[#fdfaf5] py-12 md:py-24">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="w-full flex justify-center"
+              >
+                <div className="w-full max-w-[1200px]">
+                  <img
+                    src="/Gemini_Generated_Image_f0qq6qf0qq6qf0qq.png"
+                    alt="Wishing You Both Love and Happiness"
+                    className="w-full h-auto block"
+                  />
                 </div>
-              </footer>
-            </div>
+              </motion.div>
+            </section>
           </motion.div>
         )}
       </AnimatePresence>
@@ -807,6 +1029,6 @@ export default function WeddingInvitation() {
           border-radius: 10px;
         }
       `}} />
-    </main>
+    </main >
   );
 }
