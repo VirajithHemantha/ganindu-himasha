@@ -604,26 +604,29 @@ export default function WeddingInvitation() {
                 </div>
               </section>
 
-              {/* Final Image Section - Full Width */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="w-full overflow-hidden leading-[0]"
-              >
-                <img
-                  src="/Gemini_Generated_Image_jar6bkjar6bkjar6.png"
-                  alt="With Love Umayangana & Ashan"
-                  className="w-full h-auto block"
-                />
-              </motion.div>
+              {/* Conclusion Section & Footer */}
+              <footer className="py-24 md:py-40 flex flex-col items-center text-center relative z-10 px-6">
+                <div className="h-px w-24 bg-[#ccbaa2] mb-16 opacity-50" />
 
-              {/* Minimalist Footer */}
-              <footer className="py-12 border-t border-[#ccbaa2]/30 text-center relative z-10">
-                <p className="text-[8px] md:text-[10px] uppercase tracking-[0.6em] text-[#87937a]/60 font-bold">
-                  © 2026 Umayangana & Ashan. <span className="hidden md:inline">|</span><br className="md:hidden block mt-2" /> All rights reserved.
-                </p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-6"
+                >
+                  <p className="font-playball text-5xl md:text-7xl text-[#c5a059] leading-tight">With Love,</p>
+                  <h2 className="font-cinzel text-2xl md:text-4xl text-[#87937a] tracking-[0.4em] md:tracking-[0.6em] uppercase font-bold">
+                    UMAYANGANA <span className="mx-2 md:mx-4 opacity-40 font-light">&</span> ASHAN
+                  </h2>
+                </motion.div>
+
+                <div className="mt-24 md:mt-36 pt-12 border-t border-[#ccbaa2]/20 w-full max-w-sm">
+                  <p className="text-[8px] md:text-[10px] uppercase tracking-[0.6em] text-[#87937a]/50 font-bold leading-loose">
+                    © 2026 Umayangana & Ashan<br className="md:hidden" />
+                    <span className="hidden md:inline mx-4">|</span>
+                    All rights reserved.
+                  </p>
+                </div>
               </footer>
             </div>
           </motion.div>
