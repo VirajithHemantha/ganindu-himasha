@@ -11,6 +11,7 @@ import { Sparkles, MapPin, Calendar, Clock, Send, ChevronDown } from "lucide-rea
 
 const brideGroomImage = "/images/10.png";
 const backgroundMusic = "/01-Alex_Warren_-_Ordinary_(Wedding_version).mp3";
+const googleScriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL?.trim() || "";
 
 function FloatingPetals() {
   const [isLowPowerMode, setIsLowPowerMode] = useState(false);
@@ -155,7 +156,79 @@ function CountdownTimer() {
 export default function WeddingInvitation() {
   const [isOpened, setIsOpened] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [rsvpForm, setRsvpForm] = useState({
+    name: "",
+    guests: "1",
+  });
+  const [wishForm, setWishForm] = useState({
+    name: "",
+    message: "",
+  });
+  const [rsvpStatus, setRsvpStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [wishStatus, setWishStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const audioRef = React.useRef<HTMLAudioElement>(null);
+
+  const submitToGoogleSheet = async (payload: Record<string, string>) => {
+    if (!googleScriptUrl) {
+      throw new Error("Missing VITE_GOOGLE_SCRIPT_URL");
+    }
+
+    const response = await fetch(googleScriptUrl, {
+      method: "POST",
+      body: new URLSearchParams(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error("Request failed");
+    }
+  };
+
+  const handleRsvpSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!rsvpForm.name.trim()) {
+      setRsvpStatus("error");
+      return;
+    }
+
+    setRsvpStatus("sending");
+
+    try {
+      await submitToGoogleSheet({
+        action: "rsvp",
+        name: rsvpForm.name.trim(),
+        guests: rsvpForm.guests,
+        dietaryNotes: "",
+      });
+      setRsvpStatus("success");
+      setRsvpForm({ name: "", guests: "1" });
+    } catch {
+      setRsvpStatus("error");
+    }
+  };
+
+  const handleWishSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!wishForm.name.trim() || !wishForm.message.trim()) {
+      setWishStatus("error");
+      return;
+    }
+
+    setWishStatus("sending");
+
+    try {
+      await submitToGoogleSheet({
+        action: "wish",
+        name: wishForm.name.trim(),
+        message: wishForm.message.trim(),
+      });
+      setWishStatus("success");
+      setWishForm({ name: "", message: "" });
+    } catch {
+      setWishStatus("error");
+    }
+  };
 
   const toggleMusic = () => {
     if (audioRef.current) {
@@ -289,7 +362,7 @@ export default function WeddingInvitation() {
                   className="flex flex-col items-center mb-16"
                 >
                   <p className="text-[#87937a] text-[10px] md:text-[12px] tracking-[0.3em] md:tracking-[0.5em] uppercase font-bold text-center leading-loose max-w-2xl">
-                    <span className="mb-4 block opacity-70">Mr. Monteague Sarachchandra & Mrs. Sarojini Nanayakkara<br />Together with<br />Mr. Prasanna Indrajith Hettiarachchi & Mrs. Manel Herath</span>
+                    <span className="mb-4 block opacity-70">Mr. Montegue Sarachchandra & Mrs. Sarojini Nanayakkara<br />Together with<br />Mr. Prasanna Indrajith Hettiarachchi & Mrs. Manel Herath</span>
                     Request the honour of the presence of Mr. & Mrs./Miss/Family<br className="hidden md:block" /> to celebrate the marriage of their children
                   </p>
                 </motion.div>
@@ -323,7 +396,7 @@ export default function WeddingInvitation() {
 
                     <div className="space-y-2 mb-8">
                       <p className="text-[8px] uppercase tracking-[0.4em] font-bold text-[#87937a]/60">Loving daughter of</p>
-                      <p className="text-[11px] font-cinzel text-[#87937a] tracking-wider">Mr. Monteague Sarachchandra<br />& Mrs. Sarojini Nanayakkara</p>
+                      <p className="text-[11px] font-cinzel text-[#87937a] tracking-wider">Mr. Montegue Sarachchandra<br />& Mrs. Sarojini Nanayakkara</p>
                       <h3 className="text-4xl md:text-6xl font-playball text-[#c5a059] pt-4 leading-none">Umayangana</h3>
                     </div>
 
@@ -511,13 +584,19 @@ export default function WeddingInvitation() {
                     <div className="w-full border border-slate-300 rounded-[1.5rem] p-6 md:p-8 flex flex-col items-center">
                       <h3 className="font-playball text-2xl md:text-4xl text-slate-800 mb-8 text-center">RSVP Confirmation</h3>
 
-                      <form className="w-full space-y-6 text-left" onSubmit={(e) => e.preventDefault()}>
+                      <form className="w-full space-y-6 text-left" onSubmit={handleRsvpSubmit}>
                         <div className="space-y-2">
                           <label className="text-xs font-bold text-slate-500 ml-1">Your Name</label>
                           <input
                             type="text"
                             placeholder="Type your name here..."
+                            value={rsvpForm.name}
+                            onChange={(e) => {
+                              setRsvpStatus("idle");
+                              setRsvpForm((prev) => ({ ...prev, name: e.target.value }));
+                            }}
                             className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-800 placeholder:text-slate-300 focus:outline-none focus:ring-1 focus:ring-slate-400 transition-all font-cinzel text-base"
+                            required
                           />
                         </div>
 
@@ -526,6 +605,11 @@ export default function WeddingInvitation() {
 
                           <button
                             type="button"
+                            onClick={() => {
+                              setRsvpStatus("idle");
+                              setRsvpForm((prev) => ({ ...prev, guests: "1" }));
+                            }}
+                            aria-pressed={rsvpForm.guests !== "0"}
                             className="w-full bg-[#f3f3f3] hover:bg-slate-200 text-slate-700 py-5 md:py-6 rounded-xl font-cinzel text-[11px] md:text-sm tracking-wide transition-all shadow-sm flex items-center justify-center px-4 leading-relaxed active:scale-[0.98]"
                           >
                             Yes, I'll be there!
@@ -533,15 +617,30 @@ export default function WeddingInvitation() {
 
                           <button
                             type="button"
+                            onClick={() => {
+                              setRsvpStatus("idle");
+                              setRsvpForm((prev) => ({ ...prev, guests: "0" }));
+                            }}
+                            aria-pressed={rsvpForm.guests === "0"}
                             className="w-full bg-[#f3f3f3] hover:bg-slate-200 text-slate-700 py-5 md:py-6 rounded-xl font-cinzel text-[11px] md:text-sm tracking-wide transition-all shadow-sm flex items-center justify-center px-4 leading-relaxed active:scale-[0.98]"
                           >
                             Sadly I can't attend, but you're in my heart
                           </button>
                         </div>
 
+                        {(rsvpStatus === "success" || rsvpStatus === "error") && (
+                          <p className={`text-[10px] text-center font-semibold ${rsvpStatus === "success" ? "text-emerald-600" : "text-red-500"}`}>
+                            {rsvpStatus === "success" ? "RSVP sent successfully." : "Please enter your name and try again."}
+                          </p>
+                        )}
+
                         <div className="pt-6">
-                          <button className="w-full bg-[#708da9] text-white py-4 md:py-5 rounded-xl font-cinzel text-xs md:text-sm tracking-[0.2em] font-bold hover:bg-[#5d7d9a] transition-all shadow-md uppercase">
-                            CLICK HERE TO CONFIRM
+                          <button
+                            type="submit"
+                            disabled={rsvpStatus === "sending"}
+                            className="w-full bg-[#708da9] text-white py-4 md:py-5 rounded-xl font-cinzel text-xs md:text-sm tracking-[0.2em] font-bold hover:bg-[#5d7d9a] transition-all shadow-md uppercase disabled:opacity-70"
+                          >
+                            {rsvpStatus === "sending" ? "SENDING..." : "CLICK HERE TO CONFIRM"}
                           </button>
                           <p className="text-[10px] text-slate-400 mt-4 text-center leading-relaxed">No shared details will be public. Your response is private.</p>
                         </div>
@@ -558,7 +657,7 @@ export default function WeddingInvitation() {
                   <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-slate-500 text-[10px] md:text-sm tracking-widest font-normal opacity-80 decoration-slate-300 underline-offset-4">
                     <p>Umayangana: 071 5396933</p>
                     <p>Ashan: 071 2727407</p>
-                    <p>Mr. Sarachchandra: 071 4721366</p>
+                    <p>Mr. Montegue: 071 4721366</p>
                   </div>
                 </div>
               </div>
@@ -591,13 +690,19 @@ export default function WeddingInvitation() {
                     <div className="w-full max-w-2xl mx-auto bg-white p-8 md:p-14 shadow-[0_30px_70px_-15px_rgba(135,147,122,0.1)] border border-[#ccbaa2]/50 relative group">
                       <div className="absolute inset-2 border-[0.5px] border-[#c5a059]/20 pointer-events-none transition-colors duration-700" />
 
-                      <form className="space-y-12 text-left relative z-10" onSubmit={(e) => e.preventDefault()}>
+                      <form className="space-y-12 text-left relative z-10" onSubmit={handleWishSubmit}>
                         <div className="space-y-4">
                           <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#87937a]/40">From</label>
                           <input
                             type="text"
                             placeholder="YOUR NAME"
+                            value={wishForm.name}
+                            onChange={(e) => {
+                              setWishStatus("idle");
+                              setWishForm((prev) => ({ ...prev, name: e.target.value }));
+                            }}
                             className="w-full bg-transparent border-b border-[#ccbaa2]/40 px-0 py-4 text-[#87937a] placeholder:text-[#ccbaa2]/30 focus:outline-none focus:border-[#c5a059] transition-all font-cinzel text-lg tracking-widest"
+                            required
                           />
                         </div>
                         <div className="space-y-4">
@@ -605,12 +710,27 @@ export default function WeddingInvitation() {
                           <textarea
                             rows={4}
                             placeholder="WISHES..."
+                            value={wishForm.message}
+                            onChange={(e) => {
+                              setWishStatus("idle");
+                              setWishForm((prev) => ({ ...prev, message: e.target.value }));
+                            }}
                             className="w-full bg-transparent border-b border-[#ccbaa2]/40 px-0 py-4 text-[#87937a] placeholder:text-[#ccbaa2]/30 focus:outline-none focus:border-[#c5a059] transition-all font-cinzel text-lg tracking-widest resize-none"
+                            required
                           />
                         </div>
+                        {(wishStatus === "success" || wishStatus === "error") && (
+                          <p className={`text-[10px] text-center font-semibold ${wishStatus === "success" ? "text-emerald-700" : "text-red-500"}`}>
+                            {wishStatus === "success" ? "Wish sent successfully." : "Please enter your name and wish."}
+                          </p>
+                        )}
                         <div className="pt-6 flex justify-center">
-                          <button className="bg-[#87937a] text-white px-12 py-5 font-bold uppercase tracking-[0.4em] text-[10px] hover:bg-[#7a866d] transition-all duration-300 shadow-md">
-                            Send Wishes
+                          <button
+                            type="submit"
+                            disabled={wishStatus === "sending"}
+                            className="bg-[#87937a] text-white px-12 py-5 font-bold uppercase tracking-[0.4em] text-[10px] hover:bg-[#7a866d] transition-all duration-300 shadow-md disabled:opacity-70"
+                          >
+                            {wishStatus === "sending" ? "Sending..." : "Send Wishes"}
                           </button>
                         </div>
                       </form>
