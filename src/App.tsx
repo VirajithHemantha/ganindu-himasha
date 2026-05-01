@@ -32,7 +32,7 @@ const INVITATION = {
 } as const;
 
 const backgroundMusic = "/01-Alex_Warren_-_Ordinary_(Wedding_version).mp3";
-const googleScriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL?.trim() || "";
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbyHN1BshRvxx96eATyW9C0rtkaNFXAoNAe9lh0TiO1uJ-eKzlwXTKglqTUSz5ZH-CoKqA/exec";
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 
@@ -203,7 +203,7 @@ export default function WeddingInvitation() {
 
   const submitToGoogleSheet = async (payload: Record<string, string>) => {
     if (!googleScriptUrl) {
-      throw new Error("Missing VITE_GOOGLE_SCRIPT_URL");
+      throw new Error("Google Script URL is not configured");
     }
 
     const response = await fetch(googleScriptUrl, {
@@ -441,7 +441,7 @@ export default function WeddingInvitation() {
               {/* Floral Decorations */}
               <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-90 transition-transform duration-1000" alt="" />
               <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-90 transition-transform duration-1000" alt="" />
-              
+
               <div
                 className="absolute inset-0 bg-center bg-cover"
                 style={{ backgroundImage: `url(\"${HERO_BACKGROUND_IMAGE}\")` }}
@@ -799,7 +799,7 @@ export default function WeddingInvitation() {
               {/* Floral Decorations */}
               <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
               <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
-              
+
               {/* Decorative Geometric Elements (CSS-Based UI Decorations) */}
               <div className="absolute -top-24 -left-24 w-[500px] h-[500px] border border-[#ed64a6]/10 rounded-full flex items-center justify-center opacity-30 pointer-events-none">
                 <div className="w-[80%] h-[80%] border border-[#d53f8c]/10 rounded-full" />
@@ -1052,7 +1052,7 @@ export default function WeddingInvitation() {
               {/* Floral Decorations */}
               <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
               <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
-              
+
               {/* Large Background Text Ornament */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-playball text-[15vw] text-[#ed64a6]/5 whitespace-nowrap pointer-events-none select-none italic">
                 Sweet Messages
