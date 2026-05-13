@@ -380,30 +380,43 @@ export default function WeddingInvitation() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 2, delay: 0.5 }}
-                  className="absolute inset-0 flex flex-col items-center justify-start pt-24 md:pt-32 z-[105] pointer-events-none text-center px-6"
+                  className="absolute inset-0 flex flex-col items-center justify-start pt-[30vh] md:pt-32 z-[105] pointer-events-none text-center px-6"
                 >
                   <motion.h2
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 2, delay: 0.8 }}
-                    className="font-playball text-4xl md:text-7xl text-[#C30E59] mb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
+                    className="font-playball text-3xl md:text-7xl text-white mb-8 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
                   >
                     Wedding Invitation
                   </motion.h2>
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.5, delay: 1.2 }}
-                    className="h-1 w-32 md:w-48 bg-[#C30E59] mb-6"
-                  />
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 2, delay: 1.5 }}
-                    className="font-cinzel text-xl md:text-4xl text-[#C30E59] tracking-[0.5em] uppercase font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
-                  >
-                    {INVITATION.couple.bride} & {INVITATION.couple.groom}
-                  </motion.p>
+                  
+                  <div className="flex flex-col items-center gap-4">
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 2, delay: 1.2 }}
+                      className="font-cinzel text-xl md:text-5xl text-white tracking-[0.5em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                    >
+                      {INVITATION.couple.bride}
+                    </motion.p>
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 2, delay: 1.5 }}
+                      className="font-playball text-2xl md:text-4xl text-white/80 italic drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                    >
+                      &
+                    </motion.span>
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 2, delay: 1.8 }}
+                      className="font-cinzel text-xl md:text-5xl text-white tracking-[0.5em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                    >
+                      {INVITATION.couple.groom}
+                    </motion.p>
+                  </div>
                 </motion.div>
 
                 <motion.button
