@@ -391,28 +391,30 @@ export default function WeddingInvitation() {
                     Wedding Invitation
                   </motion.h2>
                   
-                  <div className="flex flex-col items-center gap-4">
+                  <div className="flex flex-col items-center w-full max-w-[280px] mx-auto">
                     <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 2, delay: 1.2 }}
-                      className="font-cinzel text-xl md:text-5xl text-white tracking-[0.5em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                      className="font-cinzel text-3xl md:text-6xl text-white tracking-[0.3em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] self-start"
                     >
                       {INVITATION.couple.bride}
                     </motion.p>
+                    
                     <motion.span
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 2, delay: 1.5 }}
-                      className="font-playball text-2xl md:text-4xl text-white/80 italic drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                      className="font-playball text-2xl md:text-4xl text-white/80 italic drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] my-1"
                     >
                       &
                     </motion.span>
+                    
                     <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 2, delay: 1.8 }}
-                      className="font-cinzel text-xl md:text-5xl text-white tracking-[0.5em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                      className="font-cinzel text-xl md:text-4xl text-white/90 tracking-[0.4em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] self-end"
                     >
                       {INVITATION.couple.groom}
                     </motion.p>
