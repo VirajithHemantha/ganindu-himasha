@@ -330,7 +330,10 @@ export default function WeddingInvitation() {
             />
 
             {!hasStarted && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center z-[120] bg-black/40 backdrop-blur-[2px]">
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center z-[120] bg-black/60 backdrop-blur-[2px] bg-cover bg-center"
+                style={{ backgroundImage: 'url("/back.jpeg")' }}
+              >
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -342,7 +345,7 @@ export default function WeddingInvitation() {
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     className="mb-12"
                   >
-                    <h2 className="font-playball text-4xl md:text-6xl text-white mb-2 drop-shadow-2xl">The Wedding of</h2>
+                    <h2 className="font-cinzel text-xl md:text-2xl text-white mb-4 tracking-[0.3em] uppercase drop-shadow-2xl">A Celebration Of Love</h2>
                     <p className="font-cinzel text-xl md:text-2xl text-[#F2AE66] tracking-[0.3em] uppercase drop-shadow-lg">{INVITATION.couple.bride} & {INVITATION.couple.groom}</p>
                   </motion.div>
 
@@ -359,7 +362,7 @@ export default function WeddingInvitation() {
                   >
                     <div className="absolute inset-0 bg-[#F2AE66] opacity-90 group-hover:opacity-100 transition-opacity" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                    <span className="relative z-10 font-cinzel font-bold text-black text-sm tracking-[0.4em] uppercase">Open Invitation</span>
+                    <span className="relative z-10 font-cinzel font-bold text-black text-sm tracking-[0.4em] uppercase">Celebrate With Us</span>
                   </button>
 
                   <motion.div
@@ -380,23 +383,23 @@ export default function WeddingInvitation() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 2, delay: 0.5 }}
-                  className="absolute inset-0 flex flex-col items-center justify-start pt-[30vh] md:pt-32 z-[105] pointer-events-none text-center px-6"
+                  className="absolute inset-0 flex flex-col items-center justify-start pt-[35vh] md:pt-48 pl-16 md:pl-0 z-[105] pointer-events-none text-center px-6"
                 >
                   <motion.h2
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 2, delay: 0.8 }}
-                    className="font-playball text-3xl md:text-7xl text-white mb-8 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                    className="font-cinzel text-base md:text-3xl text-white mb-6 tracking-[0.3em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
                   >
-                    Wedding Invitation
+                    Together With Love
                   </motion.h2>
                   
-                  <div className="flex flex-col items-center w-full max-w-[280px] mx-auto">
+                  <div className="flex flex-col items-center w-full max-w-4xl mx-auto">
                     <motion.p
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 2, delay: 1.2 }}
-                      className="font-cinzel text-3xl md:text-6xl text-white tracking-[0.3em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] self-start"
+                      className="font-cinzel text-2xl md:text-6xl text-white tracking-[0.3em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
                     >
                       {INVITATION.couple.bride}
                     </motion.p>
@@ -414,7 +417,7 @@ export default function WeddingInvitation() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 2, delay: 1.8 }}
-                      className="font-cinzel text-xl md:text-4xl text-white/90 tracking-[0.4em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] self-end"
+                      className="font-cinzel text-2xl md:text-4xl text-white/90 tracking-[0.4em] uppercase font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
                     >
                       {INVITATION.couple.groom}
                     </motion.p>
@@ -453,24 +456,22 @@ export default function WeddingInvitation() {
 
             {/* Hero Section */}
             <section className="w-full relative flex items-center justify-center overflow-hidden bg-white min-h-[85vh]">
-              {/* Floral Decorations */}
-              <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-90 transition-transform duration-1000" alt="" />
-              <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-90 transition-transform duration-1000" alt="" />
+
 
               <div
                 className="absolute inset-0 bg-center bg-cover"
                 style={{ backgroundImage: `url(\"${HERO_BACKGROUND_IMAGE}\")` }}
                 aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-white/70" aria-hidden="true" />
-              <div className="absolute inset-0 bg-gradient-to-b from-theme-50 via-white/70 to-theme-100/40" aria-hidden="true" />
+              <div className="absolute inset-0 bg-white/45" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-b from-theme-50/40 via-white/30 to-white/60" aria-hidden="true" />
               <div className="relative z-10 w-full max-w-5xl px-6 py-24 md:py-32 text-center">
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 0.75, y: 0 }}
-                  className="text-[10px] md:text-xs uppercase tracking-[0.6em] font-bold text-[#C30E59]"
+                  className="font-playball text-2xl md:text-3xl text-[#C30E59] italic"
                 >
-                  Wedding Invitation
+                  A Celebration Of Love
                 </motion.p>
 
                 <motion.div
@@ -496,20 +497,23 @@ export default function WeddingInvitation() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35, duration: 0.8 }}
-                  className="mt-12 space-y-5"
+                  className="mt-8 space-y-3"
                 >
-                  <p className="font-cinzel text-[10px] md:text-xs tracking-[0.4em] uppercase text-[#C30E59]/70">
-                    {INVITATION.date.displayLong} · {INVITATION.time.reception}
+                  <p className="font-cinzel text-lg md:text-2xl tracking-[0.15em] uppercase text-[#C30E59] font-black drop-shadow-sm">
+                    {INVITATION.date.displayLong}
                   </p>
-                  <p className="text-[#C30E59]/70 text-xs md:text-sm tracking-[0.15em] font-medium font-cinzel leading-loose max-w-2xl mx-auto">
-                    Together with our families, we request the honour of your presence as we celebrate our wedding.
+                  <p className="font-cinzel text-base md:text-lg tracking-[0.4em] uppercase text-[#C30E59] font-bold">
+                    {INVITATION.time.reception}
+                  </p>
+                  <p className="text-[#C30E59]/70 text-xs md:text-sm tracking-[0.1em] font-medium font-cinzel leading-relaxed max-w-2xl mx-auto pt-4">
+                    Together with our loved ones, we invite you to celebrate the beginning of our forever
                   </p>
 
                   <a
                     href="#details"
                     className="inline-flex items-center justify-center gap-2 mt-6 px-8 py-4 bg-[#C30E59] text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] shadow-xl hover:bg-black transition-colors"
                   >
-                    View Details
+                    Celebrate With Us
                     <ChevronDown className="w-4 h-4" />
                   </a>
                 </motion.div>
@@ -533,7 +537,12 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Wedding Details Section */}
-            <section id="details" className="relative pt-12 md:pt-20 pb-24 md:pb-32 w-full flex flex-col items-center bg-[#F08787]/10 overflow-hidden">
+            <section id="details" className="relative pt-4 md:pt-16 pb-24 md:pb-32 w-full flex flex-col items-center bg-[#F08787]/10 overflow-hidden">
+              {/* Watermark Background */}
+              <div 
+                className="absolute inset-0 pointer-events-none opacity-[0.12] mix-blend-multiply bg-top bg-no-repeat bg-[length:100%_auto] md:bg-center md:bg-contain"
+                style={{ backgroundImage: 'url("/WhatsApp Image 2026-05-15 at 03.03.02.jpeg")' }}
+              />
 
               {/* Ornate Frame Border Overlay */}
               <div className="absolute inset-4 md:inset-8 border-[1.5px] border-[#4a5d23]/30 pointer-events-none z-10" />
@@ -554,18 +563,24 @@ export default function WeddingInvitation() {
 
                   <div className="text-[#C30E59] space-y-4">
                     <div className="space-y-4 mb-8">
-                      <p className="font-cinzel text-[11px] md:text-sm tracking-[0.4em] mb-2 uppercase font-bold">Two Families Join Hands</p>
-                      <div className="flex flex-col items-center justify-center gap-2">
-                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700">Mr. Hemasiri Amarasinghe & Mrs. Gnana Hettiarachchi</span>
-                        <span className="font-playball text-2xl text-[#FD8A6B] italic my-2">Together with</span>
-                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700">Mrs. Himali Koralage & Mr. Chaminda Liyangasthenne (Late)</span>
+                      <p className="font-cinzel text-base md:text-xl tracking-[0.4em] mb-8 uppercase font-bold border-b border-[#C30E59]/20 pb-4">Two Families | One Heart</p>
+                      
+                      <div className="flex flex-col items-center justify-center gap-3">
+                        <span className="text-2xl md:text-4xl font-playball text-[#FD8A6B] italic">{INVITATION.couple.groomFull}</span>
+                        <span className="text-xs md:text-sm font-cinzel tracking-[0.2em] text-stone-600 uppercase">Son of</span>
+                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-800 font-bold">Mr. Hemasiri Amarasinghe & Mrs. Gnana Hettiarachchi</span>
+                        
+                        <div className="flex items-center gap-4 my-6">
+                          <div className="h-px w-12 bg-[#FD8A6B]/30" />
+                          <span className="font-playball text-3xl text-[#FD8A6B]">&</span>
+                          <div className="h-px w-12 bg-[#FD8A6B]/30" />
+                        </div>
+
+                        <span className="text-2xl md:text-4xl font-playball text-[#FD8A6B] italic">{INVITATION.couple.brideFull}</span>
+                        <span className="text-xs md:text-sm font-cinzel tracking-[0.2em] text-stone-600 uppercase">Daughter of</span>
+                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-800 font-bold">Mr. Chaminda Liyangasthenne (Late) & Mrs. Himali Koralage</span>
                       </div>
                     </div>
-
-                    <p className="text-[10px] md:text-[13px] tracking-[0.2em] md:tracking-[0.4em] uppercase font-medium leading-loose max-w-3xl border-t border-b border-[#F08787]/50 py-6">
-                      With hearts full of love, we request the honour of the presence of<br />
-                      <span className="text-[#FD8A6B] font-bold text-base md:text-xl my-2 block font-playball">{INVITATION.couple.brideFull} & {INVITATION.couple.groomFull}</span>
-                    </p>
                   </div>
                 </motion.div>
 
