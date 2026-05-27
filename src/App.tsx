@@ -346,7 +346,12 @@ export default function WeddingInvitation() {
                     className="mb-12"
                   >
                     <h2 className="font-cinzel text-xl md:text-2xl text-white mb-4 tracking-[0.3em] uppercase drop-shadow-2xl">A Celebration Of Love</h2>
-                    <p className="font-cinzel text-xl md:text-2xl text-[#F2AE66] tracking-[0.3em] uppercase drop-shadow-lg">{INVITATION.couple.bride} & {INVITATION.couple.groom}</p>
+                    <p 
+                      className="font-cinzel text-xl md:text-2xl font-bold text-yellow-400 tracking-[0.3em] uppercase drop-shadow-lg"
+                      style={{ color: "#facc15", WebkitTextFillColor: "#facc15", WebkitTextStroke: "1px white" }}
+                    >
+                      {INVITATION.couple.bride} & {INVITATION.couple.groom}
+                    </p>
                   </motion.div>
 
                   <button
@@ -362,7 +367,7 @@ export default function WeddingInvitation() {
                   >
                     <div className="absolute inset-0 bg-[#F2AE66] opacity-90 group-hover:opacity-100 transition-opacity" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                    <span className="relative z-10 font-cinzel font-bold text-black text-sm tracking-[0.4em] uppercase">Celebrate With Us</span>
+                    <span className="relative z-10 font-cinzel font-bold text-black text-sm tracking-[0.4em] uppercase">View Invitation</span>
                   </button>
 
                   <motion.div
@@ -389,7 +394,7 @@ export default function WeddingInvitation() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 2, delay: 0.8 }}
-                    className="font-cinzel text-base md:text-3xl text-white mb-6 tracking-[0.3em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+                    className="font-cinzel font-bold text-base md:text-3xl text-white mb-6 tracking-[0.3em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
                   >
                     Together With Love
                   </motion.h2>
@@ -454,8 +459,8 @@ export default function WeddingInvitation() {
               </div>
             </motion.button>
 
-            {/* Hero Section */}
-            <section className="w-full relative flex items-center justify-center overflow-hidden bg-white min-h-[85vh]">
+            {/* Hero Section - Desktop */}
+            <section className="hidden md:flex w-full relative items-center justify-center overflow-hidden bg-white min-h-[85vh]">
 
 
               <div
@@ -536,8 +541,19 @@ export default function WeddingInvitation() {
               </motion.div>
             </section>
 
-            {/* Wedding Details Section */}
-            <section id="details" className="relative pt-4 md:pt-16 pb-24 md:pb-32 w-full flex flex-col items-center bg-[#F08787]/10 overflow-hidden">
+            {/* Hero Section - Mobile */}
+            <section className="md:hidden w-full relative overflow-hidden bg-white">
+              <motion.img 
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                src="/h.png" 
+                className="w-full h-auto block" 
+                alt="Wedding Invitation Hero" 
+              />
+            </section>
+
+            <section id="details" className="relative pt-0 md:pt-16 pb-24 md:pb-32 w-full flex flex-col items-center bg-[#F08787]/10 overflow-hidden">
               {/* Watermark Background */}
               <div 
                 className="absolute inset-0 pointer-events-none opacity-[0.12] mix-blend-multiply bg-top bg-no-repeat bg-[length:100%_auto] md:bg-center md:bg-contain"
@@ -545,58 +561,28 @@ export default function WeddingInvitation() {
               />
 
               {/* Ornate Frame Border Overlay */}
-              <div className="absolute inset-4 md:inset-8 border-[1.5px] border-[#4a5d23]/30 pointer-events-none z-10" />
-              <div className="absolute inset-5 md:inset-10 border-[0.5px] border-[#c1b199]/20 pointer-events-none z-10" />
+              <div className="hidden md:block absolute inset-4 md:inset-8 border-[1.5px] border-[#4a5d23]/30 pointer-events-none z-10" />
+              <div className="hidden md:block absolute inset-5 md:inset-10 border-[0.5px] border-[#c1b199]/20 pointer-events-none z-10" />
 
-              <div className="max-w-[1100px] w-full flex flex-col items-center text-center relative z-20 px-6">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center mb-16 space-y-6"
-                >
-                  <div className="flex items-center gap-4 opacity-40">
-                    <div className="h-px w-8 bg-[#C30E59]" />
-                    <Sparkles className="w-4 h-4 text-[#FD8A6B]" />
-                    <div className="h-px w-8 bg-[#C30E59]" />
-                  </div>
-
-                  <div className="text-[#C30E59] space-y-4">
-                    <div className="space-y-4 mb-8">
-                      <p className="font-cinzel text-base md:text-xl tracking-[0.4em] mb-8 uppercase font-bold border-b border-[#C30E59]/20 pb-4">Two Families | One Heart</p>
-                      
-                      <div className="flex flex-col items-center justify-center gap-3">
-                        <span className="text-2xl md:text-4xl font-playball text-[#FD8A6B] italic">{INVITATION.couple.groomFull}</span>
-                        <span className="text-xs md:text-sm font-cinzel tracking-[0.2em] text-stone-600 uppercase">Son of</span>
-                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-800 font-bold">Mr. Hemasiri Amarasinghe & Mrs. Gnana Hettiarachchi</span>
-                        
-                        <div className="flex items-center gap-4 my-6">
-                          <div className="h-px w-12 bg-[#FD8A6B]/30" />
-                          <span className="font-playball text-3xl text-[#FD8A6B]">&</span>
-                          <div className="h-px w-12 bg-[#FD8A6B]/30" />
-                        </div>
-
-                        <span className="text-2xl md:text-4xl font-playball text-[#FD8A6B] italic">{INVITATION.couple.brideFull}</span>
-                        <span className="text-xs md:text-sm font-cinzel tracking-[0.2em] text-stone-600 uppercase">Daughter of</span>
-                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-800 font-bold">Mr. Chaminda Liyangasthenne (Late) & Mrs. Himali Koralage</span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
+              <div className="max-w-[1100px] w-full flex flex-col items-center text-center relative z-20 px-0 md:px-6">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="mb-8"
+                  transition={{ duration: 1 }}
+                  className="w-full max-w-[600px] mx-auto mb-12 overflow-hidden md:shadow-[0_30px_70px_-15px_rgba(135,147,122,0.2)] md:border md:border-[#F08787]/50"
                 >
-                  <h2 className="font-cinzel text-xl md:text-2xl text-[#FD8A6B] tracking-[0.5em] font-bold uppercase">Wedding Celebration</h2>
+                  <img 
+                    src="/d.png" 
+                    className="w-full h-auto block" 
+                    alt="Wedding Celebration Details" 
+                  />
                 </motion.div>
 
 
 
                 {/* Names Card */}
-                <div className="relative w-full flex flex-col items-center justify-center my-12 mb-24">
+                <div className="relative w-full flex flex-col items-center justify-center my-12 mb-24 px-4 md:px-0">
                   <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
