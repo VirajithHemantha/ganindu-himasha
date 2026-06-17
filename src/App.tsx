@@ -800,16 +800,23 @@ export default function WeddingInvitation() {
 
 
             {/* Timeline Section */}
-            <section className="relative py-16 md:py-32 bg-gradient-to-b from-[#FFF5F0] via-[#FFE4E1]/40 to-[#FFF0EB] overflow-hidden">
-              <div className="container mx-auto px-4 md:px-6 relative z-10">
+            <section className="relative pt-0 pb-8 md:py-32 bg-gradient-to-b from-[#FFF5F0] via-[#FFE4E1]/40 to-[#FFF0EB] overflow-hidden">
+              <div className="container mx-auto px-0 md:px-6 relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="max-w-4xl mx-auto flex flex-col items-center py-12 relative overflow-hidden"
+                  className="max-w-4xl mx-auto flex flex-col items-center py-0 md:py-12 relative overflow-hidden"
                 >
-                  {/* Header */}
-                  <div className="text-center mb-16 md:mb-24 flex flex-col items-center w-full">
+                  {/* Mobile View: Full Image */}
+                  <div className="block md:hidden w-full">
+                    <img src="/images/mobile_timeline.jpeg" alt="Timeline Mobile View" className="w-full h-auto object-cover" />
+                  </div>
+
+                  {/* Desktop View: Header & Timeline */}
+                  <div className="hidden md:flex flex-col items-center w-full">
+                    {/* Header */}
+                    <div className="text-center mb-16 md:mb-24 flex flex-col items-center w-full">
                     <span className="font-serif text-[10px] md:text-xs tracking-[0.4em] uppercase text-[#C30E59] mb-2 font-bold">Wedding</span>
                     <h2 className="font-playball text-[5rem] md:text-[8rem] bg-gradient-to-r from-[#FD8A6B] to-[#C30E59] bg-clip-text text-transparent leading-none mb-6 px-4 md:px-8">timeline</h2>
                     <div className="font-serif text-sm md:text-2xl tracking-[0.2em] uppercase text-[#C30E59] mb-4 font-bold">Himasha & Ganindu</div>
@@ -943,6 +950,7 @@ export default function WeddingInvitation() {
                       </div>
 
                     </div>
+                  </div>
                   </div>
                 </motion.div>
               </div>
