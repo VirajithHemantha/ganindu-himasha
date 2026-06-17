@@ -722,37 +722,60 @@ export default function WeddingInvitation() {
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative z-20 w-full max-w-[500px] bg-gradient-to-br from-[#fff0eb] to-[#ffe4e6] p-10 md:p-14 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] text-[#333] flex flex-col"
+                    className="relative z-20 w-full max-w-[400px] bg-gradient-to-b from-[#FFF0EB] via-white to-[#FFE4E1]/80 px-8 py-16 md:px-12 md:py-20 shadow-[0_40px_80px_-20px_rgba(195,14,89,0.2)] flex flex-col items-center rounded-t-full rounded-b-[2.5rem] border border-[#FD8A6B]/20 overflow-hidden"
                   >
-                    {/* Top Row: Save the Date & Vertical Date */}
-                    <div className="flex justify-between items-start mb-12 w-full">
-                      <div className="flex flex-col mt-4 -rotate-[8deg] items-center">
-                        <h2 className="font-playball text-[4rem] md:text-[5.5rem] text-[#D82B48] leading-[0.6]">Save</h2>
-                        <span className="font-serif text-lg md:text-xl text-[#D82B48] ml-12">the</span>
-                        <h2 className="font-playball text-[4rem] md:text-[5.5rem] text-[#D82B48] leading-[0.6] ml-16">Date</h2>
-                      </div>
-                      
-                      <div className="flex flex-col items-center font-serif text-[3.5rem] md:text-[4.5rem] text-[#2d3748] leading-none mt-2">
-                        <span>20</span>
-                        <span className="text-xl my-2 text-[#718096]">•</span>
-                        <span>07</span>
-                        <span className="text-xl my-2 text-[#718096]">•</span>
-                        <span>26</span>
-                      </div>
+                    {/* Double Border Frame */}
+                    <div className="absolute inset-3 border border-[#FD8A6B]/30 rounded-t-full rounded-b-3xl pointer-events-none" />
+                    <div className="absolute inset-4 border-[0.5px] border-[#C30E59]/20 rounded-t-full rounded-b-3xl pointer-events-none" />
+                    
+                    {/* Top Decorative Element */}
+                    <div className="absolute top-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-60">
+                      <div className="w-1 h-1 rounded-full bg-[#C30E59]" />
+                      <div className="w-0.5 h-6 bg-gradient-to-b from-[#C30E59] to-transparent" />
                     </div>
 
-                    {/* Invitation Text */}
-                    <div className="text-center font-cinzel text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-[#4a5568] mb-10 leading-relaxed max-w-[85%] mx-auto mt-4 border-y border-[#e2e8f0] py-4">
-                      Himasha & Ganindu<br/>
-                      invite you to their wedding
+                    {/* Title */}
+                    <div className="mt-12 mb-6 text-center w-full relative z-10">
+                       <h2 className="font-playball text-[4.5rem] md:text-[5.5rem] bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent leading-[0.8] mb-2 drop-shadow-sm transform -rotate-2">
+                         Save
+                       </h2>
+                       <div className="font-serif italic text-xl md:text-2xl text-[#C30E59]/80 -mt-2 mb-1">
+                         the
+                       </div>
+                       <h2 className="font-playball text-[4.5rem] md:text-[5.5rem] bg-gradient-to-r from-[#FD8A6B] to-[#C30E59] bg-clip-text text-transparent leading-[0.8] drop-shadow-sm transform -rotate-2 ml-4">
+                         Date
+                       </h2>
+                    </div>
+
+                    {/* Separator */}
+                    <div className="flex items-center gap-3 mb-6 w-full max-w-[200px] justify-center opacity-70">
+                      <div className="h-px flex-grow bg-gradient-to-r from-transparent to-[#C30E59]"></div>
+                      <Sparkles className="w-3 h-3 text-[#C30E59]" />
+                      <div className="h-px flex-grow bg-gradient-to-l from-transparent to-[#C30E59]"></div>
+                    </div>
+
+                    {/* Names */}
+                    <div className="text-center font-cinzel text-sm md:text-base uppercase tracking-[0.2em] font-bold text-[#C30E59] mb-10 leading-relaxed">
+                      Himasha <br/>
+                      <span className="font-playball text-2xl text-[#FD8A6B] lowercase block my-1">&</span> 
+                      Ganindu
                     </div>
 
                     {/* Calendar block */}
-                    <div className="flex flex-col items-center mb-10 w-full max-w-[280px] mx-auto">
-                      <h4 className="font-cinzel text-xs md:text-sm font-bold tracking-widest uppercase mb-4 text-[#2d3748]">July 2026</h4>
-                      <div className="grid grid-cols-7 gap-x-2 md:gap-x-4 gap-y-3 w-full text-center font-serif text-xs md:text-sm text-[#4a5568]">
+                    <div className="flex flex-col items-center mb-10 w-full max-w-[260px] mx-auto bg-white/50 p-6 rounded-3xl border border-[#C30E59]/10 shadow-[inset_0_2px_10px_rgba(195,14,89,0.03)] backdrop-blur-sm relative">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#FFF0EB] px-4 py-1 rounded-full border border-[#C30E59]/20 text-[10px] uppercase tracking-widest font-bold text-[#C30E59]">
+                        July 2026
+                      </div>
+                      
+                      <div className="grid grid-cols-7 gap-x-2 gap-y-3 w-full text-center font-serif text-xs md:text-sm text-[#4a5568] mt-4">
                         {/* Days Header */}
-                        <span className="font-bold">M</span><span className="font-bold">T</span><span className="font-bold">W</span><span className="font-bold">T</span><span className="font-bold">F</span><span className="font-bold text-[#D82B48]">S</span><span className="font-bold text-[#D82B48]">S</span>
+                        <span className="font-bold text-[#C30E59]/50 text-[10px] uppercase">M</span>
+                        <span className="font-bold text-[#C30E59]/50 text-[10px] uppercase">T</span>
+                        <span className="font-bold text-[#C30E59]/50 text-[10px] uppercase">W</span>
+                        <span className="font-bold text-[#C30E59]/50 text-[10px] uppercase">T</span>
+                        <span className="font-bold text-[#C30E59]/50 text-[10px] uppercase">F</span>
+                        <span className="font-bold text-[#FD8A6B]/70 text-[10px] uppercase">S</span>
+                        <span className="font-bold text-[#FD8A6B]/70 text-[10px] uppercase">S</span>
                         
                         {/* Empty days for July 2026 (Starts on Wednesday) */}
                         <span></span><span></span>
@@ -765,13 +788,13 @@ export default function WeddingInvitation() {
                             <div key={day} className="relative flex justify-center items-center h-6 w-6 mx-auto">
                               {isWeddingDay ? (
                                 <>
-                                  <svg className="absolute w-8 h-8 text-[#D82B48] fill-current" viewBox="0 0 24 24">
+                                  <svg className="absolute w-8 h-8 text-[#C30E59] fill-current drop-shadow-md transform scale-[1.2] -translate-y-[1px]" viewBox="0 0 24 24">
                                     <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/>
                                   </svg>
-                                  <span className="relative z-10 text-white font-bold">{day}</span>
+                                  <span className="relative z-10 text-white font-bold text-xs">{day}</span>
                                 </>
                               ) : (
-                                <span>{day}</span>
+                                <span className="opacity-80 text-[#333]">{day}</span>
                               )}
                             </div>
                           );
@@ -780,10 +803,10 @@ export default function WeddingInvitation() {
                     </div>
 
                     {/* Bottom Details */}
-                    <div className="text-center font-serif text-xs md:text-sm text-[#4a5568] leading-relaxed">
-                      Waters Edge - Eagle Banquet,<br/>
+                    <div className="text-center font-serif text-[11px] md:text-xs text-[#C30E59]/80 leading-relaxed mt-2 px-4">
+                      <span className="font-cinzel tracking-widest uppercase text-[10px] font-bold text-[#C30E59] mb-1.5 block">Waters Edge - Eagle Banquet</span>
                       Battaramulla<br/>
-                      <span className="italic mt-1 block">at 6:00 PM</span>
+                      <span className="italic mt-1 block opacity-80 font-playball text-lg text-[#FD8A6B]">at 6:00 PM</span>
                     </div>
                   </motion.div>
                 </div>
@@ -793,161 +816,205 @@ export default function WeddingInvitation() {
 
 
             {/* Timeline Section */}
-            <section className="relative py-12 md:py-32 bg-gradient-to-b from-[#FFE4E1]/40 via-[#FFF5F0] to-[#FFE4E1]/60 overflow-hidden">
+            <section className="relative py-16 md:py-32 bg-gradient-to-b from-[#FFE4E1]/40 via-[#FFF5F0] to-[#FFE4E1]/60 overflow-hidden">
+              {/* Subtle background sparkles */}
+              <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay bg-noise" />
+
               <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="max-w-4xl mx-auto flex flex-col items-center bg-gradient-to-br from-[#fff0eb] via-white to-[#ffe4e6] border border-[#f08787]/20 rounded-3xl shadow-[0_20px_50px_-10px_rgba(240,135,135,0.15)] p-4 py-8 md:p-16 lg:p-24"
+                  className="max-w-4xl mx-auto flex flex-col items-center bg-white/80 backdrop-blur-xl border border-white/60 rounded-[2.5rem] md:rounded-[4rem] shadow-[0_40px_80px_-20px_rgba(195,14,89,0.15)] p-6 py-12 md:p-16 lg:p-24 relative overflow-hidden"
                 >
+                  {/* Elegant Double Border Frame */}
+                  <div className="absolute inset-4 border border-[#FD8A6B]/30 rounded-[2rem] md:rounded-[3.5rem] pointer-events-none" />
+                  <div className="absolute inset-5 border-[0.5px] border-[#C30E59]/20 rounded-[2rem] md:rounded-[3.5rem] pointer-events-none" />
+                  
+                  {/* Top floral accent */}
+                  <div className="absolute top-8 left-1/2 -translate-x-1/2 flex items-center gap-2 opacity-60">
+                    <div className="w-10 h-[1px] bg-gradient-to-r from-transparent to-[#C30E59]" />
+                    <Sparkles className="w-4 h-4 text-[#C30E59]" />
+                    <div className="w-10 h-[1px] bg-gradient-to-l from-transparent to-[#C30E59]" />
+                  </div>
+
                   {/* Header */}
-                  <div className="text-center mb-8 md:mb-24 flex flex-col items-center w-full">
-                    <span className="font-cinzel text-[10px] md:text-xs tracking-[0.4em] uppercase text-[#C30E59]/80 mb-4">Wedding</span>
-                    <h2 className="font-playball text-[5rem] md:text-[8rem] bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent leading-[1.2] py-4 mb-4 transform -rotate-2 drop-shadow-sm">Timeline</h2>
-                    <div className="font-cinzel text-base md:text-xl tracking-[0.3em] uppercase text-[#C30E59] mb-4">Himasha & Ganindu</div>
-                    <div className="font-serif text-sm md:text-base text-[#FD8A6B]">July 20, 2026</div>
+                  <div className="text-center mb-12 md:mb-24 flex flex-col items-center w-full mt-6 relative z-10">
+                    <span className="font-cinzel text-[10px] md:text-xs tracking-[0.5em] uppercase text-[#C30E59]/70 mb-4 font-bold">Wedding</span>
+                    <h2 className="font-playball text-[4.5rem] md:text-[8rem] bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent leading-[1.2] py-4 mb-2 transform -rotate-2 drop-shadow-sm">Timeline</h2>
+                    <div className="font-cinzel text-xs md:text-sm tracking-[0.4em] uppercase text-[#C30E59] font-bold mb-4 opacity-90">Himasha & Ganindu</div>
+                    <div className="font-serif text-sm md:text-base text-[#FD8A6B] italic">July 20, 2026</div>
                   </div>
 
                   {/* Timeline Container */}
-                  <div className="relative w-full max-w-2xl mx-auto">
-                    {/* Central Vertical Line */}
-                    <div className="absolute left-1/2 top-0 bottom-0 w-[1.5px] bg-gradient-to-b from-[#FD8A6B]/10 via-[#C30E59]/80 to-[#FD8A6B]/10 -translate-x-1/2"></div>
+                  <div className="relative w-full max-w-2xl mx-auto z-10">
+                    {/* Central Vertical Glowing Line */}
+                    <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#C30E59]/30 to-transparent -translate-x-1/2 shadow-[0_0_15px_rgba(195,14,89,0.3)]"></div>
                     
-                    <div className="flex flex-col w-full gap-6 md:gap-14">
+                    <div className="flex flex-col w-full gap-8 md:gap-14">
                       
                       {/* Event 1: Poruwa */}
-                      <div className="relative flex justify-center items-center w-full">
-                         <div className="w-1/2 flex justify-end pr-8 md:pr-12 text-right relative">
-                           <div className="absolute right-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
-                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                      <div className="relative flex justify-center items-center w-full group">
+                         <div className="w-1/2 flex justify-end pr-6 md:pr-12 text-right relative">
+                           {/* Connecting Line with Dot */}
+                           <div className="absolute right-0 top-1/2 w-6 md:w-12 h-[2px] bg-gradient-to-l from-[#C30E59]/40 to-transparent"></div>
+                           <div className="absolute right-0 top-1/2 w-2 h-2 rounded-full bg-[#C30E59] transform translate-x-1/2 -translate-y-1/2 shadow-[0_0_8px_#C30E59]"></div>
+                           
+                           {/* Pill */}
+                           <div className="flex items-center gap-3 md:gap-5 z-10 bg-white/90 backdrop-blur-md shadow-[0_8px_20px_rgba(195,14,89,0.1)] rounded-full px-3 py-1.5 md:px-6 md:py-3 border border-white hover:scale-105 transition-transform duration-500">
                              <div className="flex flex-col justify-center">
-                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">Poruwa</span>
-                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">05:00pm</span>
+                               <span className="font-serif text-[13px] md:text-lg text-[#C30E59] tracking-wide mb-0.5">Poruwa</span>
+                               <span className="font-cinzel text-[9px] md:text-xs tracking-widest font-bold text-[#FD8A6B] uppercase">05:00 PM</span>
                              </div>
-                             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-[#FD8A6B] shrink-0">
-                               <path d="M12 2L2 12h3v8h14v-8h3L12 2z"/>
-                             </svg>
+                             <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#C30E59] to-[#FD8A6B] flex items-center justify-center shadow-[0_4px_12px_rgba(195,14,89,0.3)] shrink-0 text-white group-hover:rotate-12 transition-transform duration-500">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                 <path d="M12 2L2 12h3v8h14v-8h3L12 2z"/>
+                               </svg>
+                             </div>
                            </div>
                          </div>
                          <div className="w-1/2"></div>
                       </div>
 
                       {/* Event 2: We do */}
-                      <div className="relative flex justify-center items-center w-full">
+                      <div className="relative flex justify-center items-center w-full group">
                          <div className="w-1/2"></div>
-                         <div className="w-1/2 flex justify-start pl-8 md:pl-12 text-left relative">
-                           <div className="absolute left-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
-                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
-                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0">
-                               <circle cx="9" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
-                               <circle cx="15" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
-                             </svg>
+                         <div className="w-1/2 flex justify-start pl-6 md:pl-12 text-left relative">
+                           <div className="absolute left-0 top-1/2 w-6 md:w-12 h-[2px] bg-gradient-to-r from-[#C30E59]/40 to-transparent"></div>
+                           <div className="absolute left-0 top-1/2 w-2 h-2 rounded-full bg-[#C30E59] transform -translate-x-1/2 -translate-y-1/2 shadow-[0_0_8px_#C30E59]"></div>
+                           
+                           <div className="flex items-center gap-3 md:gap-5 z-10 bg-white/90 backdrop-blur-md shadow-[0_8px_20px_rgba(195,14,89,0.1)] rounded-full px-3 py-1.5 md:px-6 md:py-3 border border-white hover:scale-105 transition-transform duration-500">
+                             <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#FD8A6B] to-[#C30E59] flex items-center justify-center shadow-[0_4px_12px_rgba(195,14,89,0.3)] shrink-0 text-white group-hover:-rotate-12 transition-transform duration-500">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                 <circle cx="9" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
+                                 <circle cx="15" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
+                               </svg>
+                             </div>
                              <div className="flex flex-col justify-center">
-                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">We do</span>
-                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">05:30pm</span>
+                               <span className="font-serif text-[13px] md:text-lg text-[#C30E59] tracking-wide mb-0.5">We Do</span>
+                               <span className="font-cinzel text-[9px] md:text-xs tracking-widest font-bold text-[#FD8A6B] uppercase">05:30 PM</span>
                              </div>
                            </div>
                          </div>
                       </div>
 
                       {/* Event 3: We drink */}
-                      <div className="relative flex justify-center items-center w-full">
-                         <div className="w-1/2 flex justify-end pr-8 md:pr-12 text-right relative">
-                           <div className="absolute right-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
-                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                      <div className="relative flex justify-center items-center w-full group">
+                         <div className="w-1/2 flex justify-end pr-6 md:pr-12 text-right relative">
+                           <div className="absolute right-0 top-1/2 w-6 md:w-12 h-[2px] bg-gradient-to-l from-[#C30E59]/40 to-transparent"></div>
+                           <div className="absolute right-0 top-1/2 w-2 h-2 rounded-full bg-[#C30E59] transform translate-x-1/2 -translate-y-1/2 shadow-[0_0_8px_#C30E59]"></div>
+                           
+                           <div className="flex items-center gap-3 md:gap-5 z-10 bg-white/90 backdrop-blur-md shadow-[0_8px_20px_rgba(195,14,89,0.1)] rounded-full px-3 py-1.5 md:px-6 md:py-3 border border-white hover:scale-105 transition-transform duration-500">
                              <div className="flex flex-col justify-center">
-                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">We drink</span>
-                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">(bar open) 06:00pm</span>
+                               <span className="font-serif text-[13px] md:text-lg text-[#C30E59] tracking-wide mb-0.5">We Drink</span>
+                               <span className="font-cinzel text-[9px] md:text-xs tracking-widest font-bold text-[#FD8A6B] uppercase">(Bar Open) 06:00 PM</span>
                              </div>
-                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0">
-                               <path d="M8 22h8M12 15v7M8 2v7c0 2 2 4 4 6 2-2 4-4 4-6V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                             </svg>
+                             <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#C30E59] to-[#FD8A6B] flex items-center justify-center shadow-[0_4px_12px_rgba(195,14,89,0.3)] shrink-0 text-white group-hover:rotate-12 transition-transform duration-500">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                 <path d="M8 22h8M12 15v7M8 2v7c0 2 2 4 4 6 2-2 4-4 4-6V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                               </svg>
+                             </div>
                            </div>
                          </div>
                          <div className="w-1/2"></div>
                       </div>
 
                       {/* Event 4: Dinner */}
-                      <div className="relative flex justify-center items-center w-full">
+                      <div className="relative flex justify-center items-center w-full group">
                          <div className="w-1/2"></div>
-                         <div className="w-1/2 flex justify-start pl-8 md:pl-12 text-left relative">
-                           <div className="absolute left-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
-                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
-                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                               <path d="M3 2v7c0 1.1.9 2 2 2h4v11"/>
-                               <path d="M21 2v20"/>
-                               <path d="M21 7h-4"/>
-                               <circle cx="12" cy="12" r="4"/>
-                             </svg>
+                         <div className="w-1/2 flex justify-start pl-6 md:pl-12 text-left relative">
+                           <div className="absolute left-0 top-1/2 w-6 md:w-12 h-[2px] bg-gradient-to-r from-[#C30E59]/40 to-transparent"></div>
+                           <div className="absolute left-0 top-1/2 w-2 h-2 rounded-full bg-[#C30E59] transform -translate-x-1/2 -translate-y-1/2 shadow-[0_0_8px_#C30E59]"></div>
+                           
+                           <div className="flex items-center gap-3 md:gap-5 z-10 bg-white/90 backdrop-blur-md shadow-[0_8px_20px_rgba(195,14,89,0.1)] rounded-full px-3 py-1.5 md:px-6 md:py-3 border border-white hover:scale-105 transition-transform duration-500">
+                             <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#FD8A6B] to-[#C30E59] flex items-center justify-center shadow-[0_4px_12px_rgba(195,14,89,0.3)] shrink-0 text-white group-hover:-rotate-12 transition-transform duration-500">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                 <path d="M3 2v7c0 1.1.9 2 2 2h4v11"/>
+                                 <path d="M21 2v20"/>
+                                 <path d="M21 7h-4"/>
+                                 <circle cx="12" cy="12" r="4"/>
+                               </svg>
+                             </div>
                              <div className="flex flex-col justify-center">
-                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">Dinner</span>
-                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">(buffet open) 07:30pm</span>
+                               <span className="font-serif text-[13px] md:text-lg text-[#C30E59] tracking-wide mb-0.5">Dinner</span>
+                               <span className="font-cinzel text-[9px] md:text-xs tracking-widest font-bold text-[#FD8A6B] uppercase">(Buffet Open) 07:30 PM</span>
                              </div>
                            </div>
                          </div>
                       </div>
 
                       {/* Event 5: Cake cutting */}
-                      <div className="relative flex justify-center items-center w-full">
-                         <div className="w-1/2 flex justify-end pr-8 md:pr-12 text-right relative">
-                           <div className="absolute right-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
-                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                      <div className="relative flex justify-center items-center w-full group">
+                         <div className="w-1/2 flex justify-end pr-6 md:pr-12 text-right relative">
+                           <div className="absolute right-0 top-1/2 w-6 md:w-12 h-[2px] bg-gradient-to-l from-[#C30E59]/40 to-transparent"></div>
+                           <div className="absolute right-0 top-1/2 w-2 h-2 rounded-full bg-[#C30E59] transform translate-x-1/2 -translate-y-1/2 shadow-[0_0_8px_#C30E59]"></div>
+                           
+                           <div className="flex items-center gap-3 md:gap-5 z-10 bg-white/90 backdrop-blur-md shadow-[0_8px_20px_rgba(195,14,89,0.1)] rounded-full px-3 py-1.5 md:px-6 md:py-3 border border-white hover:scale-105 transition-transform duration-500">
                              <div className="flex flex-col justify-center">
-                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">Cake cutting</span>
-                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">08:30pm</span>
+                               <span className="font-serif text-[13px] md:text-lg text-[#C30E59] tracking-wide mb-0.5">Cake Cutting</span>
+                               <span className="font-cinzel text-[9px] md:text-xs tracking-widest font-bold text-[#FD8A6B] uppercase">08:30 PM</span>
                              </div>
-                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                               <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/>
-                               <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2 1 2 1"/>
-                               <path d="M2 21h20"/>
-                               <path d="M7 8v2"/>
-                               <path d="M12 8v2"/>
-                               <path d="M17 8v2"/>
-                               <path d="M7 4h.01"/>
-                               <path d="M12 4h.01"/>
-                               <path d="M17 4h.01"/>
-                             </svg>
+                             <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#C30E59] to-[#FD8A6B] flex items-center justify-center shadow-[0_4px_12px_rgba(195,14,89,0.3)] shrink-0 text-white group-hover:rotate-12 transition-transform duration-500">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                 <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/>
+                                 <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2 1 2 1"/>
+                                 <path d="M2 21h20"/>
+                                 <path d="M7 8v2"/>
+                                 <path d="M12 8v2"/>
+                                 <path d="M17 8v2"/>
+                                 <path d="M7 4h.01"/>
+                                 <path d="M12 4h.01"/>
+                                 <path d="M17 4h.01"/>
+                               </svg>
+                             </div>
                            </div>
                          </div>
                          <div className="w-1/2"></div>
                       </div>
 
                       {/* Event 6: We dance */}
-                      <div className="relative flex justify-center items-center w-full">
+                      <div className="relative flex justify-center items-center w-full group">
                          <div className="w-1/2"></div>
-                         <div className="w-1/2 flex justify-start pl-8 md:pl-12 text-left relative">
-                           <div className="absolute left-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
-                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
-                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                               <path d="M9 18V5l12-2v13"/>
-                               <path d="M9 9l12-2"/>
-                               <circle cx="6" cy="18" r="3"/>
-                               <circle cx="18" cy="16" r="3"/>
-                             </svg>
+                         <div className="w-1/2 flex justify-start pl-6 md:pl-12 text-left relative">
+                           <div className="absolute left-0 top-1/2 w-6 md:w-12 h-[2px] bg-gradient-to-r from-[#C30E59]/40 to-transparent"></div>
+                           <div className="absolute left-0 top-1/2 w-2 h-2 rounded-full bg-[#C30E59] transform -translate-x-1/2 -translate-y-1/2 shadow-[0_0_8px_#C30E59]"></div>
+                           
+                           <div className="flex items-center gap-3 md:gap-5 z-10 bg-white/90 backdrop-blur-md shadow-[0_8px_20px_rgba(195,14,89,0.1)] rounded-full px-3 py-1.5 md:px-6 md:py-3 border border-white hover:scale-105 transition-transform duration-500">
+                             <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#FD8A6B] to-[#C30E59] flex items-center justify-center shadow-[0_4px_12px_rgba(195,14,89,0.3)] shrink-0 text-white group-hover:-rotate-12 transition-transform duration-500">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                 <path d="M9 18V5l12-2v13"/>
+                                 <path d="M9 9l12-2"/>
+                                 <circle cx="6" cy="18" r="3"/>
+                                 <circle cx="18" cy="16" r="3"/>
+                               </svg>
+                             </div>
                              <div className="flex flex-col justify-center">
-                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">We dance</span>
-                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">09:00pm</span>
+                               <span className="font-serif text-[13px] md:text-lg text-[#C30E59] tracking-wide mb-0.5">We Dance</span>
+                               <span className="font-cinzel text-[9px] md:text-xs tracking-widest font-bold text-[#FD8A6B] uppercase">09:00 PM</span>
                              </div>
                            </div>
                          </div>
                       </div>
 
                       {/* Event 7: Newly weds depart */}
-                      <div className="relative flex justify-center items-center w-full">
-                         <div className="w-1/2 flex justify-end pr-8 md:pr-12 text-right relative">
-                           <div className="absolute right-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
-                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                      <div className="relative flex justify-center items-center w-full group">
+                         <div className="w-1/2 flex justify-end pr-6 md:pr-12 text-right relative">
+                           <div className="absolute right-0 top-1/2 w-6 md:w-12 h-[2px] bg-gradient-to-l from-[#C30E59]/40 to-transparent"></div>
+                           <div className="absolute right-0 top-1/2 w-2 h-2 rounded-full bg-[#C30E59] transform translate-x-1/2 -translate-y-1/2 shadow-[0_0_8px_#C30E59]"></div>
+                           
+                           <div className="flex items-center gap-3 md:gap-5 z-10 bg-white/90 backdrop-blur-md shadow-[0_8px_20px_rgba(195,14,89,0.1)] rounded-full px-3 py-1.5 md:px-6 md:py-3 border border-white hover:scale-105 transition-transform duration-500">
                              <div className="flex flex-col justify-center">
-                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">Newly weds depart</span>
-                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">11:30pm</span>
+                               <span className="font-serif text-[13px] md:text-lg text-[#C30E59] tracking-wide mb-0.5">Newlyweds Depart</span>
+                               <span className="font-cinzel text-[9px] md:text-xs tracking-widest font-bold text-[#FD8A6B] uppercase">11:30 PM</span>
                              </div>
-                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                               <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
-                               <circle cx="7" cy="17" r="2"/>
-                               <path d="M9 17h6"/>
-                               <circle cx="17" cy="17" r="2"/>
-                             </svg>
+                             <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#C30E59] to-[#FD8A6B] flex items-center justify-center shadow-[0_4px_12px_rgba(195,14,89,0.3)] shrink-0 text-white group-hover:rotate-12 transition-transform duration-500">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                 <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                                 <circle cx="7" cy="17" r="2"/>
+                                 <path d="M9 17h6"/>
+                                 <circle cx="17" cy="17" r="2"/>
+                               </svg>
+                             </div>
                            </div>
                          </div>
                          <div className="w-1/2"></div>
