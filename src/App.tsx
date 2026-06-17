@@ -36,7 +36,7 @@ const googleScriptUrl = "https://script.google.com/macros/s/AKfycbyHN1BshRvxx96e
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 
-const HERO_BACKGROUND_IMAGE = "/IMG_2154.JPEG";
+const HERO_BACKGROUND_IMAGE = "/IMG_2149.JPEG";
 
 
 function FloatingPetals() {
@@ -487,11 +487,7 @@ export default function WeddingInvitation() {
                   transition={{ delay: 0.1 }}
                   className="mt-3 mb-6 flex items-center justify-center gap-2"
                 >
-                  <div className="w-12 h-[1px] bg-[#C30E59]/40"></div>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#C30E59]/60">
-                    <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                  </svg>
-                  <div className="w-12 h-[1px] bg-[#C30E59]/40"></div>
+                  <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#C30E59]/50 to-transparent"></div>
                 </motion.div>
 
                 {/* Names */}
@@ -515,12 +511,6 @@ export default function WeddingInvitation() {
                     <h1 className="font-playball text-[5rem] sm:text-[6rem] md:text-[8rem] text-[#FD8A6B] leading-none drop-shadow-sm pr-8">
                       {INVITATION.couple.groom}
                     </h1>
-                    <div className="absolute -right-2 top-1/4 flex flex-col items-center">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#C30E59]">
-                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                      </svg>
-                      <Sparkles className="w-4 h-4 text-[#C30E59] ml-4 -mt-2" />
-                    </div>
                   </div>
                 </motion.div>
 
@@ -540,7 +530,6 @@ export default function WeddingInvitation() {
                   
                   <div className="flex items-center gap-4 md:gap-6 mb-4">
                     <div className="flex items-center gap-2">
-                       <Sparkles className="w-4 h-4 opacity-50" />
                        <span className="font-cinzel text-6xl md:text-7xl font-bold">20</span>
                     </div>
                     <div className="w-[1.5px] h-12 md:h-16 bg-[#C30E59]/40"></div>
@@ -548,11 +537,10 @@ export default function WeddingInvitation() {
                       <span className="font-cinzel text-xl md:text-2xl font-bold tracking-[0.2em] leading-tight">JULY</span>
                       <span className="font-cinzel text-xl md:text-2xl font-bold tracking-[0.2em] leading-tight">2026</span>
                     </div>
-                    <Sparkles className="w-4 h-4 opacity-50" />
                   </div>
 
                   <p className="font-cinzel text-sm md:text-base tracking-[0.2em] font-bold flex items-center gap-2">
-                    <span>♥</span> {INVITATION.time.reception} <span>♥</span>
+                    {INVITATION.time.reception}
                   </p>
                 </motion.div>
 
@@ -565,11 +553,7 @@ export default function WeddingInvitation() {
                 >
                   {/* Decorative separator */}
                   <div className="mb-6 flex items-center justify-center gap-2">
-                    <div className="w-16 h-[1px] bg-[#C30E59]/40"></div>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#C30E59]/60">
-                      <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                    </svg>
-                    <div className="w-16 h-[1px] bg-[#C30E59]/40"></div>
+                    <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#C30E59]/50 to-transparent"></div>
                   </div>
 
                   <a
@@ -606,8 +590,8 @@ export default function WeddingInvitation() {
             <section id="details" className="relative pt-0 md:pt-16 pb-12 md:pb-32 w-full flex flex-col items-center bg-gradient-to-b from-[#FFF0EB] via-white to-[#FFE4E1]/40 overflow-hidden">
               {/* Watermark Background */}
               <div 
-                className="absolute inset-0 pointer-events-none opacity-[0.12] mix-blend-multiply bg-top bg-no-repeat bg-[length:100%_auto] md:bg-center md:bg-contain"
-                style={{ backgroundImage: 'url("/WhatsApp Image 2026-05-15 at 03.03.02.jpeg")' }}
+                className="absolute inset-0 pointer-events-none opacity-[0.20] mix-blend-multiply bg-top bg-no-repeat bg-[length:100%_auto] md:bg-center md:bg-cover"
+                style={{ backgroundImage: 'url("/IMG_2154.JPEG")' }}
               />
 
               {/* Ornate Frame Border Overlay */}
@@ -623,92 +607,94 @@ export default function WeddingInvitation() {
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative z-20 w-full max-w-[700px] bg-white p-8 md:p-16 shadow-[0_30px_70px_-15px_rgba(135,147,122,0.2)] flex flex-col items-center justify-center text-center bg-cover bg-center overflow-hidden"
-                    style={{ backgroundImage: 'url("/WhatsApp Image 2026-05-15 at 03.03.02.jpeg")' }}
+                    className="relative z-20 w-full max-w-[700px] bg-white p-8 md:p-16 shadow-[0_30px_70px_-15px_rgba(195,14,89,0.15)] flex flex-col items-center justify-center text-center bg-cover bg-center overflow-hidden rounded-[2rem] md:rounded-[3rem]"
+                    style={{ backgroundImage: 'url("/IMG_2154.JPEG")' }}
                   >
                     {/* Background Overlay to reduce image colors */}
-                    <div className="absolute inset-0 bg-[#fffcf5]/90" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#FFF0EB]/85 to-white/90" />
 
                     {/* Floral Corners */}
-                    <img src="/top left.png" className="absolute top-0 left-0 w-32 md:w-48 opacity-40 pointer-events-none" alt="" />
-                    <img src="/down right.png" className="absolute bottom-0 right-0 w-32 md:w-48 opacity-40 pointer-events-none" alt="" />
+                    <img src="/images/44.png" className="absolute top-0 right-0 w-32 md:w-48 opacity-60 pointer-events-none mix-blend-multiply" alt="" />
+                    <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 md:w-48 opacity-60 pointer-events-none mix-blend-multiply" alt="" />
 
-                    {/* Gold Border */}
-                    <div className="absolute inset-3 md:inset-5 border-[1.5px] border-[#c49b63]/30 pointer-events-none" />
-                    <div className="absolute inset-4 md:inset-6 border-[0.5px] border-[#c49b63]/20 pointer-events-none" />
+                    {/* Sunset Border */}
+                    <div className="absolute inset-3 md:inset-5 border-[1.5px] border-[#FD8A6B]/30 pointer-events-none rounded-[1.5rem] md:rounded-[2.5rem]" />
+                    <div className="absolute inset-4 md:inset-6 border-[0.5px] border-[#C30E59]/20 pointer-events-none rounded-[1.5rem] md:rounded-[2.5rem]" />
                     
                     <div className="relative z-10 w-full flex flex-col items-center">
                       
                       {/* Top Heart & Text */}
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#6A0C27] mb-4">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#C30E59] mb-4 drop-shadow-sm">
+                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1.5" fill="currentColor" className="opacity-20"/>
                         <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1" fill="none"/>
                       </svg>
                       
                       <div className="flex items-center gap-3 mb-12">
-                        <span className="font-cinzel text-[#6A0C27] text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase">Two Families</span>
-                        <div className="w-px h-3 bg-[#c49b63]/60"></div>
-                        <span className="font-cinzel text-[#6A0C27] text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase">One Heart</span>
+                        <span className="font-cinzel text-[#C30E59] text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase">Two Families</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#C30E59] to-[#FD8A6B]"></div>
+                        <span className="font-cinzel text-[#C30E59] text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase">One Heart</span>
                       </div>
 
                       {/* Groom Section */}
                       <div className="mb-8 w-full flex flex-col items-center">
-                        <h3 className="text-3xl sm:text-4xl md:text-[2.75rem] font-serif mb-6 leading-tight text-[#6A0C27]">
+                        <h3 className="text-3xl sm:text-4xl md:text-[2.75rem] font-serif mb-6 leading-tight bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent font-bold">
                           {INVITATION.couple.groomFull}
                         </h3>
                         
                         <div className="flex items-center justify-center gap-3 mb-4 w-full max-w-[200px]">
-                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
-                          <span className="font-cinzel text-[#6A0C27] text-[9px] uppercase tracking-[0.4em] font-bold whitespace-nowrap">Son Of</span>
-                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                          <div className="h-px flex-grow bg-gradient-to-r from-transparent to-[#FD8A6B]/60"></div>
+                          <span className="font-cinzel text-[#C30E59]/80 text-[9px] uppercase tracking-[0.4em] font-bold whitespace-nowrap">Son Of</span>
+                          <div className="h-px flex-grow bg-gradient-to-l from-transparent to-[#FD8A6B]/60"></div>
                         </div>
                         
-                        <p className="font-serif text-[#4a5568] text-sm md:text-base leading-relaxed tracking-wide">
+                        <p className="font-serif text-[#C30E59]/90 text-sm md:text-base leading-relaxed tracking-wide">
                           Mr. Hemasiri Amarasinghe &<br />Mrs. Gnana Hettiarachchi
                         </p>
                       </div>
 
                       {/* Ampersand */}
                       <div className="flex items-center justify-center gap-6 my-4 w-full max-w-[200px]">
-                        <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
-                        <span className="font-serif text-3xl md:text-4xl text-[#6A0C27] italic">&</span>
-                        <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                        <div className="h-px flex-grow bg-gradient-to-r from-transparent to-[#FD8A6B]/60"></div>
+                        <span className="font-playball text-4xl md:text-5xl text-[#FD8A6B] transform -rotate-3">&</span>
+                        <div className="h-px flex-grow bg-gradient-to-l from-transparent to-[#FD8A6B]/60"></div>
                       </div>
 
                       {/* Bride Section */}
                       <div className="mt-8 mb-12 w-full flex flex-col items-center">
-                        <h3 className="text-3xl sm:text-4xl md:text-[2.75rem] font-serif mb-6 leading-tight text-[#6A0C27]">
+                        <h3 className="text-3xl sm:text-4xl md:text-[2.75rem] font-serif mb-6 leading-tight bg-gradient-to-r from-[#FD8A6B] to-[#C30E59] bg-clip-text text-transparent font-bold">
                           {INVITATION.couple.brideFull}
                         </h3>
                         
                         <div className="flex items-center justify-center gap-3 mb-4 w-full max-w-[200px]">
-                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
-                          <span className="font-cinzel text-[#6A0C27] text-[9px] uppercase tracking-[0.4em] font-bold whitespace-nowrap">Daughter Of</span>
-                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                          <div className="h-px flex-grow bg-gradient-to-r from-transparent to-[#FD8A6B]/60"></div>
+                          <span className="font-cinzel text-[#C30E59]/80 text-[9px] uppercase tracking-[0.4em] font-bold whitespace-nowrap">Daughter Of</span>
+                          <div className="h-px flex-grow bg-gradient-to-l from-transparent to-[#FD8A6B]/60"></div>
                         </div>
                         
-                        <p className="font-serif text-[#4a5568] text-sm md:text-base leading-relaxed tracking-wide">
+                        <p className="font-serif text-[#C30E59]/90 text-sm md:text-base leading-relaxed tracking-wide">
                           Mr. Chaminda Liyangasthenne (Late) &<br />Mrs. Himali Koralage
                         </p>
                       </div>
 
                       {/* Bottom Celebration Text */}
                       <div className="flex flex-col items-center mt-2">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-[#c49b63] mb-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#C30E59] mb-4 drop-shadow-sm transform rotate-180">
+                          <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1.5" fill="currentColor" className="opacity-20"/>
                           <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1" fill="none"/>
                         </svg>
                         
                         <div className="flex items-center justify-center gap-3 mb-3 w-full max-w-[200px]">
-                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
-                          <span className="font-cinzel text-[#6A0C27] text-[10px] md:text-xs uppercase tracking-[0.5em] font-bold whitespace-nowrap">Wedding</span>
-                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                          <div className="h-px flex-grow bg-gradient-to-r from-transparent to-[#FD8A6B]/60"></div>
+                          <span className="font-cinzel text-[#C30E59] text-[10px] md:text-xs uppercase tracking-[0.5em] font-bold whitespace-nowrap">Wedding</span>
+                          <div className="h-px flex-grow bg-gradient-to-l from-transparent to-[#FD8A6B]/60"></div>
                         </div>
                         
-                        <span className="font-cinzel text-[#6A0C27] text-xl md:text-3xl uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold mt-2">Celebration</span>
+                        <span className="font-cinzel text-[#C30E59] text-xl md:text-3xl uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold mt-2">Celebration</span>
                         
                         <div className="flex items-center justify-center gap-2 mt-6">
-                          <div className="w-1 h-1 rounded-full bg-[#c49b63]/60"></div>
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#c49b63]"></div>
-                          <div className="w-1 h-1 rounded-full bg-[#c49b63]/60"></div>
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#FD8A6B]/60"></div>
+                          <div className="w-2 h-2 rounded-full bg-[#C30E59]"></div>
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#FD8A6B]/60"></div>
                         </div>
                       </div>
                       
