@@ -31,7 +31,7 @@ const INVITATION = {
 } as const;
 
 const backgroundMusic = "/Brooklyn Duo - A Thousand Years [WEDDING VERSION].mp3";
-const googleScriptUrl = "https://script.google.com/macros/s/AKfycbyHN1BshRvxx96eATyW9C0rtkaNFXAoNAe9lh0TiO1uJ-eKzlwXTKglqTUSz5ZH-CoKqA/exec";
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbzddqLqD4EpAp8hDrT66eblVNYqWxT7zae-dTnqMiqbF0l-yVIjD5Abquk10BkFT91biQ/exec";
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 
@@ -707,8 +707,11 @@ export default function WeddingInvitation() {
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative z-20 w-full max-w-[500px] bg-gradient-to-br from-[#fff0eb] to-[#ffe4e6] p-10 md:p-14 shadow-[0_20px_50px_-10px_rgba(195,14,89,0.1)] text-[#333] flex flex-col rounded-[2rem] md:rounded-[3rem] border-[0.5px] border-[#FD8A6B]/30"
+                    className="relative z-20 w-full max-w-[500px] bg-cover bg-center overflow-hidden p-10 md:p-14 shadow-[0_20px_50px_-10px_rgba(195,14,89,0.1)] text-[#333] flex flex-col rounded-[2rem] md:rounded-[3rem] border-[0.5px] border-[#FD8A6B]/30"
+                    style={{ backgroundImage: 'url("/IMG_2146.JPEG")' }}
                   >
+                    {/* Background Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#fff0eb]/85 to-[#ffe4e6]/90 pointer-events-none" />
                     {/* Sunset Inner Border */}
                     <div className="absolute inset-3 md:inset-5 border-[1.5px] border-[#FD8A6B]/20 pointer-events-none rounded-[1.5rem] md:rounded-[2.5rem]" />
                     <div className="absolute inset-4 md:inset-6 border-[0.5px] border-[#C30E59]/10 pointer-events-none rounded-[1.5rem] md:rounded-[2.5rem]" />
@@ -717,14 +720,14 @@ export default function WeddingInvitation() {
                     <div className="flex justify-between items-start mb-8 w-full relative z-10">
                       {/* Left: Save the Date & Invite Text */}
                       <div className="flex flex-col items-start mt-4 -ml-8 sm:-ml-6 md:ml-0">
-                        <div className="flex flex-col -rotate-[8deg] items-center mb-0 md:mb-4">
-                          <h2 className="font-playball text-[4.5rem] md:text-[5.5rem] bg-gradient-to-r from-[#FD8A6B] to-[#C30E59] bg-clip-text text-transparent leading-normal font-bold py-2 px-4 mb-0 md:-mb-4">
+                        <div className="flex flex-col items-center mb-0 md:mb-4">
+                          <h2 className="font-script text-[5.5rem] md:text-[7rem] bg-gradient-to-r from-[#FD8A6B] to-[#C30E59] bg-clip-text text-transparent leading-normal font-bold py-2 px-4 mb-0 md:-mb-4">
                             Save
                           </h2>
                           <span className="font-serif text-xl md:text-xl text-[#C30E59] ml-12 font-bold relative z-10 my-1 md:my-0">
                             the
                           </span>
-                          <h2 className="font-playball text-[4.5rem] md:text-[5.5rem] bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent leading-normal ml-16 font-bold py-2 px-4 mt-0 md:-mt-6">
+                          <h2 className="font-script text-[5.5rem] md:text-[7rem] bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent leading-normal ml-16 font-bold py-2 px-4 mt-0 md:-mt-6">
                             Date
                           </h2>
                         </div>
@@ -1057,15 +1060,10 @@ export default function WeddingInvitation() {
                   </div>
 
                   <h2 className="font-cinzel text-5xl md:text-9xl bg-gradient-to-br from-[#FD8A6B] to-[#c2410c] bg-clip-text text-transparent leading-tight font-light uppercase tracking-tight relative">
-                    {INVITATION.venue.name.split(" - ")[0].toUpperCase()} <span className="block md:inline font-playball normal-case text-4xl md:text-8xl bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent md:-ml-8 relative z-10 translate-y-4 md:translate-y-0 italic drop-shadow-sm"> - {INVITATION.venue.name.split(" - ")[1]}</span>
+                    {INVITATION.venue.name.split(" - ")[0].toUpperCase()} <span className="block md:inline font-playball normal-case text-4xl md:text-8xl bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent md:-ml-8 relative z-10 translate-y-4 md:translate-y-0 italic drop-shadow-sm"> - {INVITATION.venue.name.split(" - ")[1]} -</span>
                   </h2>
 
-                  <div className="max-w-xl mx-auto pt-10 relative">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-[#F08787]" />
-                    <p className="text-[#C30E59]/80 text-sm md:text-base tracking-[0.2em] font-medium uppercase font-cinzel leading-loose pt-8">
-                      WHERE TRADITION MEETS THE BEAUTY OF NEW BEGINNINGS
-                    </p>
-                  </div>
+
                 </motion.div>
 
                 <div className="grid lg:grid-cols-12 gap-10 lg:gap-24 items-center">
