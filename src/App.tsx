@@ -36,7 +36,7 @@ const googleScriptUrl = "https://script.google.com/macros/s/AKfycbyHN1BshRvxx96e
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 
-const HERO_BACKGROUND_IMAGE = publicImagePath("1 (4).jpg");
+const HERO_BACKGROUND_IMAGE = "/IMG_2154.JPEG";
 
 
 function FloatingPetals() {
@@ -154,20 +154,20 @@ function CountdownTimer({ isDark = false }: { isDark?: boolean }) {
           className="relative group"
         >
           {/* Ornamental Frame container */}
-          <div className={`relative w-[4.5rem] h-[6.5rem] sm:w-20 sm:h-28 md:w-32 md:h-44 rounded-t-full shadow-[0_15px_35px_-10px_rgba(0,0,0,0.15)] border flex flex-col items-center justify-center overflow-hidden transition-all duration-700 group-hover:-translate-y-3 ${isDark ? "bg-[#d53f8c] border-white/20" : "bg-white border-theme-100/60"
+          <div className={`relative w-[5.5rem] h-[8rem] sm:w-24 sm:h-36 md:w-32 md:h-44 rounded-t-full shadow-[0_15px_35px_-10px_rgba(0,0,0,0.15)] border flex flex-col items-center justify-center overflow-hidden transition-all duration-700 group-hover:-translate-y-3 ${isDark ? "bg-[#d53f8c] border-white/20" : "bg-white border-theme-100/60"
             }`}>
             <div className={`absolute inset-1.5 sm:inset-2 md:inset-3 border-[0.5px] rounded-t-full pointer-events-none ${isDark ? "border-white/30" : "border-theme-300/50"
               }`} />
 
             {/* The Number */}
-            <span className={`text-2xl sm:text-3xl md:text-5xl font-playball leading-none relative z-10 drop-shadow-sm mt-3 sm:mt-4 md:mt-6 transition-transform duration-500 group-hover:scale-110 ${isDark ? "text-white" : "text-theme-800"
+            <span className={`text-4xl sm:text-5xl md:text-5xl font-playball leading-none relative z-10 drop-shadow-sm mt-3 sm:mt-4 md:mt-6 transition-transform duration-500 group-hover:scale-110 ${isDark ? "text-white" : "text-theme-800"
               }`}>
               {Math.max(0, stat.value).toString().padStart(2, '0')}
             </span>
 
             {/* The Label */}
             <div className="w-full flex justify-center mt-2 sm:mt-3 md:mt-6 mb-1 sm:mb-2 relative z-10">
-              <span className={`text-[5px] sm:text-[6px] md:text-[8px] uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border shadow-sm whitespace-nowrap ${isDark ? "bg-white/10 text-white border-white/20" : "bg-stone-50 text-stone-500 border-theme-100/50"
+              <span className={`text-[8px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border shadow-sm whitespace-nowrap ${isDark ? "bg-white/10 text-white border-white/20" : "bg-stone-50 text-stone-500 border-theme-100/50"
                 }`}>
                 {stat.label}
               </span>
@@ -303,7 +303,7 @@ export default function WeddingInvitation() {
 
   return (
     <main
-      className={`h-[100dvh] w-full bg-[#fdfaf5] transition-all duration-1000 ${isOpened ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden flex items-center justify-center"
+      className={`h-[100dvh] w-full bg-gradient-to-br from-[#fff0eb] to-[#ffe4e6] transition-all duration-1000 ${isOpened ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden flex items-center justify-center"
         } relative font-montserrat scroll-smooth`}
     >
       <FloatingPetals />
@@ -459,67 +459,127 @@ export default function WeddingInvitation() {
               </div>
             </motion.button>
 
-            {/* Hero Section - Desktop */}
-            <section className="hidden md:flex w-full relative items-center justify-center overflow-hidden bg-white min-h-[85vh]">
+            {/* Hero Section */}
+            <section className="flex w-full relative items-center justify-center overflow-hidden bg-gradient-to-b from-[#FFF5F0] via-white to-[#FFF0EB] min-h-[85vh]">
 
 
               <div
                 className="absolute inset-0 bg-center bg-cover"
-                style={{ backgroundImage: `url(\"${HERO_BACKGROUND_IMAGE}\")` }}
+                style={{ backgroundImage: `url("${HERO_BACKGROUND_IMAGE}")` }}
                 aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-white/45" aria-hidden="true" />
-              <div className="absolute inset-0 bg-gradient-to-b from-theme-50/40 via-white/30 to-white/60" aria-hidden="true" />
-              <div className="relative z-10 w-full max-w-5xl px-6 py-24 md:py-32 text-center">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-[#FFE4E1]/30" aria-hidden="true" />
+              <div className="relative z-10 w-full max-w-5xl px-6 py-12 md:py-24 text-center flex flex-col items-center">
+                
+                {/* Top subtitle */}
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 0.75, y: 0 }}
-                  className="font-playball text-2xl md:text-3xl text-[#C30E59] italic"
+                  animate={{ opacity: 0.9, y: 0 }}
+                  className="font-cinzel text-xs md:text-sm tracking-[0.3em] text-[#C30E59] uppercase font-bold"
                 >
                   A Celebration Of Love
                 </motion.p>
+                
+                {/* Decorative separator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="mt-3 mb-6 flex items-center justify-center gap-2"
+                >
+                  <div className="w-12 h-[1px] bg-[#C30E59]/40"></div>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#C30E59]/60">
+                    <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                  </svg>
+                  <div className="w-12 h-[1px] bg-[#C30E59]/40"></div>
+                </motion.div>
 
+                {/* Names */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.8 }}
-                  className="mt-10"
+                  transition={{ delay: 0.2, duration: 0.8 }}
+                  className="flex flex-col items-center"
                 >
-                  <h1 className="font-playball text-6xl sm:text-7xl md:text-8xl text-[#FD8A6B] italic leading-none">
+                  <h1 className="font-playball text-[5rem] sm:text-[6rem] md:text-[8rem] text-[#FD8A6B] leading-none drop-shadow-sm">
                     {INVITATION.couple.bride}
                   </h1>
-                  <div className="mt-6 flex items-center justify-center gap-5">
-                    <div className="h-px w-14 bg-[#C30E59]/25" />
+                  
+                  <div className="flex items-center justify-center gap-4 my-2 md:my-0">
+                    <div className="w-8 md:w-16 h-[1px] bg-[#C30E59]/30"></div>
                     <span className="font-playball text-4xl md:text-5xl text-[#C30E59]">&</span>
-                    <div className="h-px w-14 bg-[#C30E59]/25" />
+                    <div className="w-8 md:w-16 h-[1px] bg-[#C30E59]/30"></div>
                   </div>
-                  <h1 className="mt-6 font-playball text-6xl sm:text-7xl md:text-8xl text-[#FD8A6B] italic leading-none">
-                    {INVITATION.couple.groom}
-                  </h1>
+                  
+                  <div className="relative">
+                    <h1 className="font-playball text-[5rem] sm:text-[6rem] md:text-[8rem] text-[#FD8A6B] leading-none drop-shadow-sm pr-8">
+                      {INVITATION.couple.groom}
+                    </h1>
+                    <div className="absolute -right-2 top-1/4 flex flex-col items-center">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#C30E59]">
+                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                      </svg>
+                      <Sparkles className="w-4 h-4 text-[#C30E59] ml-4 -mt-2" />
+                    </div>
+                  </div>
                 </motion.div>
 
+                {/* Gap for background image couple */}
+                <div className="h-[10vh] md:h-[30vh]"></div>
+
+                {/* Date and Time block */}
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.35, duration: 0.8 }}
-                  className="mt-8 space-y-3"
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                  className="flex flex-col items-center text-[#C30E59]"
                 >
-                  <p className="font-cinzel text-lg md:text-2xl tracking-[0.15em] uppercase text-[#C30E59] font-black drop-shadow-sm">
-                    {INVITATION.date.displayLong}
+                  <p className="font-cinzel text-sm md:text-base tracking-[0.3em] uppercase font-bold mb-2">
+                    MONDAY
                   </p>
-                  <p className="font-cinzel text-base md:text-lg tracking-[0.4em] uppercase text-[#C30E59] font-bold">
-                    {INVITATION.time.reception}
+                  
+                  <div className="flex items-center gap-4 md:gap-6 mb-4">
+                    <div className="flex items-center gap-2">
+                       <Sparkles className="w-4 h-4 opacity-50" />
+                       <span className="font-cinzel text-6xl md:text-7xl font-bold">20</span>
+                    </div>
+                    <div className="w-[1.5px] h-12 md:h-16 bg-[#C30E59]/40"></div>
+                    <div className="flex flex-col items-start justify-center">
+                      <span className="font-cinzel text-xl md:text-2xl font-bold tracking-[0.2em] leading-tight">JULY</span>
+                      <span className="font-cinzel text-xl md:text-2xl font-bold tracking-[0.2em] leading-tight">2026</span>
+                    </div>
+                    <Sparkles className="w-4 h-4 opacity-50" />
+                  </div>
+
+                  <p className="font-cinzel text-sm md:text-base tracking-[0.2em] font-bold flex items-center gap-2">
+                    <span>♥</span> {INVITATION.time.reception} <span>♥</span>
                   </p>
-                  <p className="text-[#C30E59]/70 text-xs md:text-sm tracking-[0.1em] font-medium font-cinzel leading-relaxed max-w-2xl mx-auto pt-4">
-                    Together with our loved ones, we invite you to celebrate the beginning of our forever
-                  </p>
+                </motion.div>
+
+                {/* Footer text */}
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="mt-4 md:mt-8 flex flex-col items-center"
+                >
+                  {/* Decorative separator */}
+                  <div className="mb-6 flex items-center justify-center gap-2">
+                    <div className="w-16 h-[1px] bg-[#C30E59]/40"></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#C30E59]/60">
+                      <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
+                    <div className="w-16 h-[1px] bg-[#C30E59]/40"></div>
+                  </div>
 
                   <a
                     href="#details"
-                    className="inline-flex items-center justify-center gap-2 mt-6 px-8 py-4 bg-[#C30E59] text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] shadow-xl hover:bg-black transition-colors"
+                    className="relative group mt-2 px-10 py-4 bg-[#C30E59] text-white text-[11px] md:text-xs font-bold uppercase tracking-[0.3em] rounded-md transition-all hover:bg-black shadow-[0_5px_15px_rgba(195,14,89,0.4)] border border-[#c49b63]"
                   >
-                    Celebrate With Us
-                    <ChevronDown className="w-4 h-4" />
+                    <div className="absolute inset-1 border border-[#c49b63]/50 rounded pointer-events-none group-hover:border-[#c49b63]/80 transition-colors"></div>
+                    <span className="flex items-center gap-3">
+                      <span className="text-[#c49b63]">♥</span> BEGIN OUR FOREVER <span className="text-[#c49b63]">♥</span>
+                    </span>
                   </a>
                 </motion.div>
               </div>
@@ -541,19 +601,9 @@ export default function WeddingInvitation() {
               </motion.div>
             </section>
 
-            {/* Hero Section - Mobile */}
-            <section className="md:hidden w-full relative overflow-hidden bg-white">
-              <motion.img 
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                src="/h.png" 
-                className="w-full h-auto block" 
-                alt="Wedding Invitation Hero" 
-              />
-            </section>
 
-            <section id="details" className="relative pt-0 md:pt-16 pb-24 md:pb-32 w-full flex flex-col items-center bg-[#F08787]/10 overflow-hidden">
+
+            <section id="details" className="relative pt-0 md:pt-16 pb-12 md:pb-32 w-full flex flex-col items-center bg-gradient-to-b from-[#FFF0EB] via-white to-[#FFE4E1]/40 overflow-hidden">
               {/* Watermark Background */}
               <div 
                 className="absolute inset-0 pointer-events-none opacity-[0.12] mix-blend-multiply bg-top bg-no-repeat bg-[length:100%_auto] md:bg-center md:bg-contain"
@@ -565,161 +615,352 @@ export default function WeddingInvitation() {
               <div className="hidden md:block absolute inset-5 md:inset-10 border-[0.5px] border-[#c1b199]/20 pointer-events-none z-10" />
 
               <div className="max-w-[1100px] w-full flex flex-col items-center text-center relative z-20 px-0 md:px-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1 }}
-                  className="w-full max-w-[600px] mx-auto mb-12 overflow-hidden md:shadow-[0_30px_70px_-15px_rgba(135,147,122,0.2)] md:border md:border-[#F08787]/50"
-                >
-                  <img 
-                    src="/d.png" 
-                    className="w-full h-auto block" 
-                    alt="Wedding Celebration Details" 
-                  />
-                </motion.div>
-
 
 
                 {/* Names Card */}
-                <div className="relative w-full flex flex-col items-center justify-center my-12 mb-24 px-4 md:px-0">
+                <div className="relative w-full flex flex-col items-center justify-center my-8 mb-12 md:mb-24 px-4 md:px-0">
                   <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative z-20 w-full max-w-[560px] bg-white p-8 md:p-14 shadow-[0_30px_70px_-15px_rgba(135,147,122,0.2)] border border-[#F08787]/50 flex flex-col items-center justify-center text-center"
+                    className="relative z-20 w-full max-w-[700px] bg-white p-8 md:p-16 shadow-[0_30px_70px_-15px_rgba(135,147,122,0.2)] flex flex-col items-center justify-center text-center bg-cover bg-center overflow-hidden"
+                    style={{ backgroundImage: 'url("/WhatsApp Image 2026-05-15 at 03.03.02.jpeg")' }}
                   >
-                    <div className="absolute inset-2 border-[0.5px] border-[#FD8A6B]/30 pointer-events-none" />
+                    {/* Background Overlay to reduce image colors */}
+                    <div className="absolute inset-0 bg-[#fffcf5]/90" />
 
-                    <div className="space-y-5 mb-10">
-                      <div className="flex flex-col items-center gap-2">
-                        <span className="text-[9px] uppercase tracking-[0.6em] font-bold text-[#C30E59]/50">Bride</span>
-                        <h3 className="text-5xl md:text-7xl font-playball text-[#FD8A6B] leading-none">{INVITATION.couple.bride}</h3>
-                      </div>
-                    </div>
+                    {/* Floral Corners */}
+                    <img src="/top left.png" className="absolute top-0 left-0 w-32 md:w-48 opacity-40 pointer-events-none" alt="" />
+                    <img src="/down right.png" className="absolute bottom-0 right-0 w-32 md:w-48 opacity-40 pointer-events-none" alt="" />
 
-                    <div className="py-2 flex items-center justify-center w-full relative">
-                      <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                        <div className="w-full border-t border-[#F08787]/50"></div>
-                      </div>
-                      <div className="relative flex justify-center">
-                        <span className="bg-white px-6 font-playball text-4xl text-[#FD8A6B]">With</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-5 mt-10">
-                      <div className="flex flex-col items-center gap-2">
-                        <span className="text-[9px] uppercase tracking-[0.6em] font-bold text-[#C30E59]/50">Groom</span>
-                        <h3 className="text-5xl md:text-7xl font-playball text-[#FD8A6B] leading-none">{INVITATION.couple.groom}</h3>
-                      </div>
-                    </div>
-
-                    <div className="mt-12 grid grid-cols-1 gap-6 w-full text-left">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full border border-[#FD8A6B]/20 flex items-center justify-center shrink-0">
-                          <Calendar className="w-4 h-4 text-[#FD8A6B]" />
-                        </div>
-                        <div>
-                          <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#C30E59]/40 font-cinzel">Date</div>
-                          <div className="text-sm md:text-base text-[#C30E59] font-cinzel tracking-wide font-bold">{INVITATION.date.displayLong}</div>
-                        </div>
+                    {/* Gold Border */}
+                    <div className="absolute inset-3 md:inset-5 border-[1.5px] border-[#c49b63]/30 pointer-events-none" />
+                    <div className="absolute inset-4 md:inset-6 border-[0.5px] border-[#c49b63]/20 pointer-events-none" />
+                    
+                    <div className="relative z-10 w-full flex flex-col items-center">
+                      
+                      {/* Top Heart & Text */}
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#6A0C27] mb-4">
+                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                      </svg>
+                      
+                      <div className="flex items-center gap-3 mb-12">
+                        <span className="font-cinzel text-[#6A0C27] text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase">Two Families</span>
+                        <div className="w-px h-3 bg-[#c49b63]/60"></div>
+                        <span className="font-cinzel text-[#6A0C27] text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase">One Heart</span>
                       </div>
 
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full border border-[#ed64a6]/20 flex items-center justify-center shrink-0">
-                          <Clock className="w-4 h-4 text-[#ed64a6]" />
+                      {/* Groom Section */}
+                      <div className="mb-8 w-full flex flex-col items-center">
+                        <h3 className="text-3xl sm:text-4xl md:text-[2.75rem] font-serif mb-6 leading-tight text-[#6A0C27]">
+                          {INVITATION.couple.groomFull}
+                        </h3>
+                        
+                        <div className="flex items-center justify-center gap-3 mb-4 w-full max-w-[200px]">
+                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                          <span className="font-cinzel text-[#6A0C27] text-[9px] uppercase tracking-[0.4em] font-bold whitespace-nowrap">Son Of</span>
+                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
                         </div>
-                        <div>
-                          <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#d53f8c]/40 font-cinzel">Time</div>
-                          <div className="text-sm md:text-base text-[#d53f8c] font-cinzel tracking-wide font-bold">Poruwa Ceremony at {INVITATION.time.ceremony}</div>
-                        </div>
+                        
+                        <p className="font-serif text-[#4a5568] text-sm md:text-base leading-relaxed tracking-wide">
+                          Mr. Hemasiri Amarasinghe &<br />Mrs. Gnana Hettiarachchi
+                        </p>
                       </div>
 
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full border border-[#ed64a6]/20 flex items-center justify-center shrink-0">
-                          <MapPin className="w-4 h-4 text-[#ed64a6]" />
+                      {/* Ampersand */}
+                      <div className="flex items-center justify-center gap-6 my-4 w-full max-w-[200px]">
+                        <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                        <span className="font-serif text-3xl md:text-4xl text-[#6A0C27] italic">&</span>
+                        <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                      </div>
+
+                      {/* Bride Section */}
+                      <div className="mt-8 mb-12 w-full flex flex-col items-center">
+                        <h3 className="text-3xl sm:text-4xl md:text-[2.75rem] font-serif mb-6 leading-tight text-[#6A0C27]">
+                          {INVITATION.couple.brideFull}
+                        </h3>
+                        
+                        <div className="flex items-center justify-center gap-3 mb-4 w-full max-w-[200px]">
+                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                          <span className="font-cinzel text-[#6A0C27] text-[9px] uppercase tracking-[0.4em] font-bold whitespace-nowrap">Daughter Of</span>
+                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
                         </div>
-                        <div>
-                          <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#d53f8c]/40 font-cinzel">Venue</div>
-                          <div className="text-sm md:text-base text-[#d53f8c] font-cinzel tracking-wide font-bold">{INVITATION.venue.name}, {INVITATION.venue.city}</div>
+                        
+                        <p className="font-serif text-[#4a5568] text-sm md:text-base leading-relaxed tracking-wide">
+                          Mr. Chaminda Liyangasthenne (Late) &<br />Mrs. Himali Koralage
+                        </p>
+                      </div>
+
+                      {/* Bottom Celebration Text */}
+                      <div className="flex flex-col items-center mt-2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-[#c49b63] mb-4">
+                          <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                        </svg>
+                        
+                        <div className="flex items-center justify-center gap-3 mb-3 w-full max-w-[200px]">
+                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                          <span className="font-cinzel text-[#6A0C27] text-[10px] md:text-xs uppercase tracking-[0.5em] font-bold whitespace-nowrap">Wedding</span>
+                          <div className="h-[1px] flex-grow bg-[#c49b63]/40"></div>
+                        </div>
+                        
+                        <span className="font-cinzel text-[#6A0C27] text-xl md:text-3xl uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold mt-2">Celebration</span>
+                        
+                        <div className="flex items-center justify-center gap-2 mt-6">
+                          <div className="w-1 h-1 rounded-full bg-[#c49b63]/60"></div>
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#c49b63]"></div>
+                          <div className="w-1 h-1 rounded-full bg-[#c49b63]/60"></div>
                         </div>
                       </div>
+                      
                     </div>
                   </motion.div>
                 </div>
 
-              </div>
-            </section>
-
-
-
-            {/* Schedule Section (No Images) */}
-            <section className="relative py-20 md:py-28 bg-white overflow-hidden">
-              <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="space-y-6 mb-12"
-                >
-                  <div className="flex flex-col items-center gap-3">
-                    <span className="text-[#d53f8c] font-bold uppercase tracking-[0.6em] text-[10px] md:text-xs opacity-50">THE DAY</span>
-                    <div className="h-px w-16 bg-[#ed64a6]/30" />
-                  </div>
-                  <h2 className="font-playball text-5xl md:text-7xl bg-gradient-to-r from-[#ed64a6] via-[#d53f8c] to-[#ed64a6] bg-clip-text text-transparent leading-none drop-shadow-sm italic">Schedule</h2>
-                  <p className="text-[#d53f8c]/70 text-xs md:text-sm tracking-[0.3em] font-medium uppercase font-cinzel max-w-2xl mx-auto pt-2 leading-loose">
-                    A simple outline of the celebration.
-                  </p>
-                </motion.div>
-
-                <div className="mx-auto max-w-2xl text-left bg-[#fdfaf0] border border-[#F08787]/40 shadow-[0_30px_70px_-20px_rgba(135,147,122,0.15)]">
-                  <div className="p-8 md:p-12 space-y-8">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full border border-[#FD8A6B]/20 flex items-center justify-center shrink-0">
-                        <Clock className="w-4 h-4 text-[#FD8A6B]" />
+                {/* Save the Date Card */}
+                <div className="relative w-full flex flex-col items-center justify-center mb-8 md:mb-12 px-4 md:px-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="relative z-20 w-full max-w-[500px] bg-gradient-to-br from-[#fff0eb] to-[#ffe4e6] p-10 md:p-14 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] text-[#333] flex flex-col"
+                  >
+                    {/* Top Row: Save the Date & Vertical Date */}
+                    <div className="flex justify-between items-start mb-12 w-full">
+                      <div className="flex flex-col mt-4 -rotate-[8deg] items-center">
+                        <h2 className="font-playball text-[4rem] md:text-[5.5rem] text-[#D82B48] leading-[0.6]">Save</h2>
+                        <span className="font-serif text-lg md:text-xl text-[#D82B48] ml-12">the</span>
+                        <h2 className="font-playball text-[4rem] md:text-[5.5rem] text-[#D82B48] leading-[0.6] ml-16">Date</h2>
                       </div>
-                      <div>
-                        <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#C30E59]/40 font-cinzel">Poruwa Starting</div>
-                        <div className="text-sm md:text-base text-[#C30E59] font-cinzel tracking-wide font-bold">05:00 PM</div>
+                      
+                      <div className="flex flex-col items-center font-serif text-[3.5rem] md:text-[4.5rem] text-[#2d3748] leading-none mt-2">
+                        <span>20</span>
+                        <span className="text-xl my-2 text-[#718096]">•</span>
+                        <span>07</span>
+                        <span className="text-xl my-2 text-[#718096]">•</span>
+                        <span>26</span>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full border border-[#FD8A6B]/20 flex items-center justify-center shrink-0">
-                        <Clock className="w-4 h-4 text-[#FD8A6B]" />
-                      </div>
-                      <div>
-                        <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#C30E59]/40 font-cinzel">Poruwa Finished</div>
-                        <div className="text-sm md:text-base text-[#C30E59] font-cinzel tracking-wide font-bold">05:30 PM</div>
+                    {/* Invitation Text */}
+                    <div className="text-center font-cinzel text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-[#4a5568] mb-10 leading-relaxed max-w-[85%] mx-auto mt-4 border-y border-[#e2e8f0] py-4">
+                      Himasha & Ganindu<br/>
+                      invite you to their wedding
+                    </div>
+
+                    {/* Calendar block */}
+                    <div className="flex flex-col items-center mb-10 w-full max-w-[280px] mx-auto">
+                      <h4 className="font-cinzel text-xs md:text-sm font-bold tracking-widest uppercase mb-4 text-[#2d3748]">July 2026</h4>
+                      <div className="grid grid-cols-7 gap-x-2 md:gap-x-4 gap-y-3 w-full text-center font-serif text-xs md:text-sm text-[#4a5568]">
+                        {/* Days Header */}
+                        <span className="font-bold">M</span><span className="font-bold">T</span><span className="font-bold">W</span><span className="font-bold">T</span><span className="font-bold">F</span><span className="font-bold text-[#D82B48]">S</span><span className="font-bold text-[#D82B48]">S</span>
+                        
+                        {/* Empty days for July 2026 (Starts on Wednesday) */}
+                        <span></span><span></span>
+                        
+                        {/* Days 1-31 */}
+                        {[...Array(31)].map((_, i) => {
+                          const day = i + 1;
+                          const isWeddingDay = day === 20;
+                          return (
+                            <div key={day} className="relative flex justify-center items-center h-6 w-6 mx-auto">
+                              {isWeddingDay ? (
+                                <>
+                                  <svg className="absolute w-8 h-8 text-[#D82B48] fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/>
+                                  </svg>
+                                  <span className="relative z-10 text-white font-bold">{day}</span>
+                                </>
+                              ) : (
+                                <span>{day}</span>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full border border-[#FD8A6B]/20 flex items-center justify-center shrink-0">
-                        <Clock className="w-4 h-4 text-[#FD8A6B]" />
-                      </div>
-                      <div>
-                        <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#C30E59]/40 font-cinzel">Registration</div>
-                        <div className="text-sm md:text-base text-[#C30E59] font-cinzel tracking-wide font-bold">05:40 PM</div>
-                      </div>
+                    {/* Bottom Details */}
+                    <div className="text-center font-serif text-xs md:text-sm text-[#4a5568] leading-relaxed">
+                      Waters Edge - Eagle Banquet,<br/>
+                      Battaramulla<br/>
+                      <span className="italic mt-1 block">at 6:00 PM</span>
                     </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full border border-[#FD8A6B]/20 flex items-center justify-center shrink-0">
-                        <Clock className="w-4 h-4 text-[#FD8A6B]" />
-                      </div>
-                      <div>
-                        <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#C30E59]/40 font-cinzel">Hotel Entrance (Couple)</div>
-                        <div className="text-sm md:text-base text-[#C30E59] font-cinzel tracking-wide font-bold">06:00 PM</div>
-                      </div>
-                    </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </section>
 
+
+
+            {/* Timeline Section */}
+            <section className="relative py-12 md:py-32 bg-gradient-to-b from-[#FFE4E1]/40 via-[#FFF5F0] to-[#FFE4E1]/60 overflow-hidden">
+              <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="max-w-4xl mx-auto flex flex-col items-center bg-gradient-to-br from-[#fff0eb] via-white to-[#ffe4e6] border border-[#f08787]/20 rounded-3xl shadow-[0_20px_50px_-10px_rgba(240,135,135,0.15)] p-4 py-8 md:p-16 lg:p-24"
+                >
+                  {/* Header */}
+                  <div className="text-center mb-8 md:mb-24 flex flex-col items-center w-full">
+                    <span className="font-cinzel text-[10px] md:text-xs tracking-[0.4em] uppercase text-[#C30E59]/80 mb-4">Wedding</span>
+                    <h2 className="font-playball text-[5rem] md:text-[8rem] bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent leading-[1.2] py-4 mb-4 transform -rotate-2 drop-shadow-sm">Timeline</h2>
+                    <div className="font-cinzel text-base md:text-xl tracking-[0.3em] uppercase text-[#C30E59] mb-4">Himasha & Ganindu</div>
+                    <div className="font-serif text-sm md:text-base text-[#FD8A6B]">July 20, 2026</div>
+                  </div>
+
+                  {/* Timeline Container */}
+                  <div className="relative w-full max-w-2xl mx-auto">
+                    {/* Central Vertical Line */}
+                    <div className="absolute left-1/2 top-0 bottom-0 w-[1.5px] bg-gradient-to-b from-[#FD8A6B]/10 via-[#C30E59]/80 to-[#FD8A6B]/10 -translate-x-1/2"></div>
+                    
+                    <div className="flex flex-col w-full gap-6 md:gap-14">
+                      
+                      {/* Event 1: Poruwa */}
+                      <div className="relative flex justify-center items-center w-full">
+                         <div className="w-1/2 flex justify-end pr-8 md:pr-12 text-right relative">
+                           <div className="absolute right-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
+                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                             <div className="flex flex-col justify-center">
+                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">Poruwa</span>
+                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">05:00pm</span>
+                             </div>
+                             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-[#FD8A6B] shrink-0">
+                               <path d="M12 2L2 12h3v8h14v-8h3L12 2z"/>
+                             </svg>
+                           </div>
+                         </div>
+                         <div className="w-1/2"></div>
+                      </div>
+
+                      {/* Event 2: We do */}
+                      <div className="relative flex justify-center items-center w-full">
+                         <div className="w-1/2"></div>
+                         <div className="w-1/2 flex justify-start pl-8 md:pl-12 text-left relative">
+                           <div className="absolute left-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
+                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0">
+                               <circle cx="9" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
+                               <circle cx="15" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
+                             </svg>
+                             <div className="flex flex-col justify-center">
+                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">We do</span>
+                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">05:30pm</span>
+                             </div>
+                           </div>
+                         </div>
+                      </div>
+
+                      {/* Event 3: We drink */}
+                      <div className="relative flex justify-center items-center w-full">
+                         <div className="w-1/2 flex justify-end pr-8 md:pr-12 text-right relative">
+                           <div className="absolute right-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
+                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                             <div className="flex flex-col justify-center">
+                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">We drink</span>
+                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">(bar open) 06:00pm</span>
+                             </div>
+                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0">
+                               <path d="M8 22h8M12 15v7M8 2v7c0 2 2 4 4 6 2-2 4-4 4-6V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                             </svg>
+                           </div>
+                         </div>
+                         <div className="w-1/2"></div>
+                      </div>
+
+                      {/* Event 4: Dinner */}
+                      <div className="relative flex justify-center items-center w-full">
+                         <div className="w-1/2"></div>
+                         <div className="w-1/2 flex justify-start pl-8 md:pl-12 text-left relative">
+                           <div className="absolute left-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
+                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                               <path d="M3 2v7c0 1.1.9 2 2 2h4v11"/>
+                               <path d="M21 2v20"/>
+                               <path d="M21 7h-4"/>
+                               <circle cx="12" cy="12" r="4"/>
+                             </svg>
+                             <div className="flex flex-col justify-center">
+                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">Dinner</span>
+                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">(buffet open) 07:30pm</span>
+                             </div>
+                           </div>
+                         </div>
+                      </div>
+
+                      {/* Event 5: Cake cutting */}
+                      <div className="relative flex justify-center items-center w-full">
+                         <div className="w-1/2 flex justify-end pr-8 md:pr-12 text-right relative">
+                           <div className="absolute right-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
+                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                             <div className="flex flex-col justify-center">
+                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">Cake cutting</span>
+                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">08:30pm</span>
+                             </div>
+                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                               <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/>
+                               <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2 1 2 1"/>
+                               <path d="M2 21h20"/>
+                               <path d="M7 8v2"/>
+                               <path d="M12 8v2"/>
+                               <path d="M17 8v2"/>
+                               <path d="M7 4h.01"/>
+                               <path d="M12 4h.01"/>
+                               <path d="M17 4h.01"/>
+                             </svg>
+                           </div>
+                         </div>
+                         <div className="w-1/2"></div>
+                      </div>
+
+                      {/* Event 6: We dance */}
+                      <div className="relative flex justify-center items-center w-full">
+                         <div className="w-1/2"></div>
+                         <div className="w-1/2 flex justify-start pl-8 md:pl-12 text-left relative">
+                           <div className="absolute left-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
+                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                               <path d="M9 18V5l12-2v13"/>
+                               <path d="M9 9l12-2"/>
+                               <circle cx="6" cy="18" r="3"/>
+                               <circle cx="18" cy="16" r="3"/>
+                             </svg>
+                             <div className="flex flex-col justify-center">
+                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">We dance</span>
+                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">09:00pm</span>
+                             </div>
+                           </div>
+                         </div>
+                      </div>
+
+                      {/* Event 7: Newly weds depart */}
+                      <div className="relative flex justify-center items-center w-full">
+                         <div className="w-1/2 flex justify-end pr-8 md:pr-12 text-right relative">
+                           <div className="absolute right-0 top-1/2 w-8 md:w-12 h-[1.5px] bg-[#FD8A6B]/50"></div>
+                           <div className="flex items-center gap-3 md:gap-8 z-10 bg-white/90 backdrop-blur-sm shadow-[0_4px_15px_rgba(253,138,107,0.15)] rounded-full px-4 py-2 md:px-6 md:py-3 border border-[#FD8A6B]/20">
+                             <div className="flex flex-col justify-center">
+                               <span className="font-serif text-sm md:text-lg text-[#C30E59] tracking-wide mb-1">Newly weds depart</span>
+                               <span className="font-serif text-xs md:text-sm text-[#FD8A6B]">11:30pm</span>
+                             </div>
+                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[#FD8A6B] shrink-0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                               <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                               <circle cx="7" cy="17" r="2"/>
+                               <path d="M9 17h6"/>
+                               <circle cx="17" cy="17" r="2"/>
+                             </svg>
+                           </div>
+                         </div>
+                         <div className="w-1/2"></div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </section>
+
             {/* Countdown Section */}
-            <section className="relative py-28 md:py-48 bg-[#C30E59] flex flex-col items-center overflow-hidden">
+            <section className="relative py-16 md:py-32 bg-[#C30E59] flex flex-col items-center overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/20 via-transparent to-black/20 pointer-events-none" />
 
               {/* Floating Decorative Shapes */}
@@ -742,7 +983,7 @@ export default function WeddingInvitation() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1 }}
-                  className="relative mb-20"
+                  className="relative mb-12 md:mb-20"
                 >
                   {/* Backdrop Title */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-playball text-[18vw] md:text-[220px] text-white/5 whitespace-nowrap pointer-events-none select-none tracking-wider">
@@ -778,7 +1019,7 @@ export default function WeddingInvitation() {
                   whileInView={{ opacity: 0.8 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.8 }}
-                  className="mt-20 flex flex-col items-center gap-4"
+                  className="mt-12 md:mt-20 flex flex-col items-center gap-4"
                 >
                   <p className="text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-white font-bold text-center">
                     Wait for the magic
@@ -799,7 +1040,7 @@ export default function WeddingInvitation() {
 
 
             {/* Venue Location Section */}
-            <section className="relative py-28 md:py-48 bg-[#fdfaf5] overflow-hidden">
+            <section className="relative py-16 md:py-32 bg-gradient-to-b from-[#FFE4E1]/60 via-white to-[#FFF0EB] overflow-hidden">
               {/* Floral Decorations */}
               <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
               <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
@@ -816,7 +1057,7 @@ export default function WeddingInvitation() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="space-y-10 mb-24"
+                  className="space-y-10 mb-12 md:mb-24"
                 >
                   <div className="flex flex-col items-center gap-4">
                     <span className="text-[#C30E59] font-bold uppercase tracking-[0.8em] text-[10px] md:text-xs opacity-40">T H E · V E N U E</span>
@@ -828,7 +1069,7 @@ export default function WeddingInvitation() {
                   </div>
 
                   <h2 className="font-cinzel text-5xl md:text-9xl bg-gradient-to-br from-[#FD8A6B] to-[#c2410c] bg-clip-text text-transparent leading-tight font-light uppercase tracking-tight relative">
-                    {INVITATION.venue.name.split(" ")[0].toUpperCase()} <span className="block md:inline font-playball normal-case text-4xl md:text-8xl bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent md:-ml-8 relative z-10 translate-y-4 md:translate-y-0 italic drop-shadow-sm">{INVITATION.venue.name.split(" ").slice(1).join(" ")}</span>
+                    {INVITATION.venue.name.split(" - ")[0].toUpperCase()} <span className="block md:inline font-playball normal-case text-4xl md:text-8xl bg-gradient-to-r from-[#C30E59] to-[#FD8A6B] bg-clip-text text-transparent md:-ml-8 relative z-10 translate-y-4 md:translate-y-0 italic drop-shadow-sm"> - {INVITATION.venue.name.split(" - ")[1]}</span>
                   </h2>
 
                   <div className="max-w-xl mx-auto pt-10 relative">
@@ -839,64 +1080,21 @@ export default function WeddingInvitation() {
                   </div>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+                <div className="grid lg:grid-cols-12 gap-10 lg:gap-24 items-center">
                   {/* Left: Atmospheric Location Card */}
-                  <div className="lg:col-span-5 text-left order-2 lg:order-1">
+                  <div className="lg:col-span-5 text-left order-2 lg:order-1 flex justify-center lg:justify-start">
                     <motion.div
-                      initial={{ opacity: 0, x: -40 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: 0.2, duration: 0.8 }}
-                      className="bg-white p-10 md:p-16 shadow-[0_60px_100px_-40px_rgba(135,147,122,0.2)] border border-[#F08787]/30 relative group"
+                      transition={{ duration: 1.2 }}
+                      className="relative w-full max-w-[400px] aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(135,147,122,0.3)] bg-white p-2 md:p-3"
                     >
-                      {/* Interactive hover ornament */}
-                      <div className="absolute inset-2 border-[0.5px] border-[#FD8A6B]/20 pointer-events-none group-hover:border-[#FD8A6B]/40 transition-colors duration-700" />
-
-                      <div className="space-y-12 relative z-10">
-                        <div className="space-y-6">
-                          <p className="text-[#C30E59] text-xl md:text-2xl font-light italic leading-relaxed font-playball text-center lg:text-left">
-                            "May our celebration be as infinite as the ocean and as warm as the tropical sun."
-                          </p>
-                          <div className="h-0.5 w-12 bg-[#F08787]/60 mx-auto lg:ml-0" />
-                        </div>
-
-                        <div className="space-y-10">
-                          <div className="flex items-start gap-8">
-                            <div className="w-12 h-12 rounded-full border border-[#FD8A6B]/20 flex items-center justify-center shrink-0">
-                              <MapPin className="w-5 h-5 text-[#FD8A6B]" />
-                            </div>
-                            <div className="space-y-3">
-                              <h4 className="text-[#C30E59]/40 font-bold text-[10px] uppercase tracking-[0.5em] font-cinzel">The Destination</h4>
-                              <p className="text-xl md:text-2xl text-[#C30E59] font-cinzel leading-relaxed tracking-wide font-bold">
-                                {INVITATION.venue.name}, {INVITATION.venue.city}
-                              </p>
-                            </div>
-                          </div>
-
-                          <div className="flex items-start gap-8">
-                            <div className="w-12 h-12 rounded-full border border-[#FD8A6B]/20 flex items-center justify-center shrink-0">
-                              <Clock className="w-5 h-5 text-[#FD8A6B]" />
-                            </div>
-                            <div className="space-y-1">
-                              <h4 className="text-[#C30E59]/40 font-bold text-[10px] uppercase tracking-[0.5em] font-cinzel">The Poruwa Ceremony</h4>
-                              <p className="text-xl md:text-2xl text-[#C30E59] font-cinzel leading-relaxed tracking-wide font-bold">
-                                {INVITATION.time.ceremony}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <button
-                          onClick={() => window.open(INVITATION.venue.googleMapsLink, "_blank")}
-                          className="w-full group relative inline-flex items-center justify-center gap-4 py-6 bg-[#C30E59] text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] overflow-hidden transition-all hover:bg-black shadow-xl mt-4"
-                        >
-                          <div className="absolute inset-0 bg-white/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
-                          <span className="relative z-10 flex items-center gap-3">
-                            <MapPin className="w-4 h-4" />
-                            Launch Digital Map
-                          </span>
-                        </button>
-                      </div>
+                      <img 
+                        src="https://www.watersedge.lk/wp-content/uploads/2026/03/waters-edge-new-igh-1536x969.jpg"
+                        alt="Waters Edge"
+                        className="w-full h-full object-cover rounded-[1.5rem]"
+                      />
                     </motion.div>
                   </div>
 
@@ -951,14 +1149,14 @@ export default function WeddingInvitation() {
             </section>
 
             {/* RSVP Section (No Images) */}
-            <section className="relative py-32 md:py-48 bg-[#f8f6f2] flex flex-col items-center overflow-hidden">
+            <section className="relative py-16 md:py-32 bg-gradient-to-b from-[#FFF0EB] via-[#FFF5F0] to-[#FFE4E1]/50 flex flex-col items-center overflow-hidden">
               <div className="container mx-auto px-4 max-w-4xl flex flex-col items-center relative z-10 w-full">
                 {/* Heading exactly like image */}
                 <motion.h2
                   initial={{ opacity: 0, y: -20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="font-cinzel text-2xl md:text-4xl text-slate-800 tracking-[0.3em] mb-12 uppercase text-center"
+                  className="font-cinzel text-2xl md:text-4xl text-slate-800 tracking-[0.3em] mb-8 md:mb-12 uppercase text-center"
                 >
                   RSVP
                 </motion.h2>
@@ -1039,7 +1237,7 @@ export default function WeddingInvitation() {
                 </motion.div>
 
                 {/* Info info mirroring the clean aesthetic */}
-                <div className="mt-32 flex flex-col items-center gap-6 text-center w-full max-w-xl">
+                <div className="mt-16 md:mt-32 flex flex-col items-center gap-6 text-center w-full max-w-xl">
                   <div className="h-px w-24 bg-slate-300" />
                   <p className="text-slate-500 text-[10px] tracking-[0.4em] font-bold uppercase mt-2">RSVP Contacts</p>
                   <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-slate-500 text-[10px] md:text-sm tracking-widest font-normal opacity-80 decoration-slate-300 underline-offset-4">
@@ -1052,7 +1250,7 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Wishing Section */}
-            <section className="relative py-28 md:py-48 bg-[#fdfaf5] overflow-hidden">
+            <section className="relative py-16 md:py-32 bg-gradient-to-b from-[#FFE4E1]/50 via-white to-[#FFF5F0] overflow-hidden">
               {/* Floral Decorations */}
               <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
               <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
@@ -1067,7 +1265,7 @@ export default function WeddingInvitation() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="space-y-6 mb-20"
+                  className="space-y-6 mb-10 md:mb-20"
                 >
                   <div className="flex flex-col items-center gap-3">
                     <span className="text-[#C30E59] font-bold uppercase tracking-[0.6em] text-[10px] md:text-xs opacity-50">GUESTBOOK</span>
@@ -1100,7 +1298,7 @@ export default function WeddingInvitation() {
                     <div className="absolute top-4 left-4 w-12 h-12 border-t border-l border-[#FD8A6B]/40 rounded-tl-xl" />
                     <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-[#FD8A6B]/40 rounded-br-xl" />
 
-                    <form className="space-y-16 text-left relative z-10" onSubmit={handleWishSubmit}>
+                    <form className="space-y-10 md:space-y-16 text-left relative z-10" onSubmit={handleWishSubmit}>
                       <div className="space-y-6 group">
                         <label className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C30E59]/40 group-focus-within:text-[#FD8A6B] transition-colors">
                           From
@@ -1175,7 +1373,7 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Closing Section (No Images) */}
-            <section className="w-full relative overflow-hidden bg-[#fdfaf5] py-24 md:py-32">
+            <section className="w-full relative overflow-hidden bg-gradient-to-b from-[#FFF5F0] to-[#FFE4E1] py-12 md:py-24">
               <div className="container mx-auto px-6 max-w-5xl text-center">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
